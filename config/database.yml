@@ -21,12 +21,10 @@ production:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test: &test
-  adapter: postgresql
-  encoding: utf8
-  reconnect: false
-  database: wishlisting_test
+  adapter: sqlite3
+  database: db/test.sqlite3
   pool: 5
-  min_messages: warning
+  timeout: 5000
 
 # heroku handles production
 cucumber:
