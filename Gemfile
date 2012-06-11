@@ -10,7 +10,7 @@ group :production do
 end
 
 group :development, :test do
- gem 'sqlite3'
+ #gem 'sqlite3'
  gem 'heroku_san'
 end
 
@@ -49,5 +49,6 @@ gem 'jquery-rails'
    gem 'cucumber-rails'
    gem 'capybara'
    gem 'database_cleaner'
+   gem 'sqlite3'
 #end
 gem 'rspec-rails'
