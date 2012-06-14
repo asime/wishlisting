@@ -5,8 +5,7 @@ Given /^Amanda creates a charity$/ do
       When that Amanda has filled in all the fields
       Then she clicks on Add button
     }
-@@charity_id = find(:xpath, "//input[@id='charity_id']").value   
-puts "CHARITY ID: |" + @@charity_id + "|"
+  @@charity_id = find(:xpath, "//input[@id='charity_id']").value   
 end
 
 When /^Amanda clicks on Add Wishlist Item$/ do
