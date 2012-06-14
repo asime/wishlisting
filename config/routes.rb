@@ -1,5 +1,7 @@
 Wishlisting::Application.routes.draw do
   
+  resources :wishlist_items
+
   resources :charities
 
   #map.connect "home/:action", :controller => 'home', :action => /[a-z]+/i
