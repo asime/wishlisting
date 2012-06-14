@@ -1,0 +1,27 @@
+<h1>Listing wishlist_items</h1>
+
+<table>
+  <tr>
+	<th>Charity</th>
+    <th>Item</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @wishlist_items.each do |wishlist_item| %>
+  <tr>
+	<td><%= wishlist_item.charity_id %></td>
+    <td><%= wishlist_item.item %></td>
+    <td><%= wishlist_item.description %></td>
+    <td><%= link_to 'Show', wishlist_item %></td>
+    <td><%= link_to 'Edit', edit_wishlist_item_path(wishlist_item) %></td>
+    <td><%= link_to 'Destroy', wishlist_item, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Wishlist item', new_wishlist_item_path %>
