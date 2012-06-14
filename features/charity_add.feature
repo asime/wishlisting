@@ -14,3 +14,4 @@ Scenario: Add charity
  Given that Amanda has filled in all the fields
  When she clicks on Add button
  Then A successful message is displayed with the charity information
+

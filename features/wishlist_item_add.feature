@@ -12,3 +12,10 @@ Scenario: Add a wishlist item to a specific charity
  And Amanda clicks on Save
  Then Amanda sees Wishlist item was successfully created on the page
  And the Charity ID, Wishlist Item and Description she entered are shown on the page
+
+Scenario: Add an image
+ Given Amanda clicks on Add Wishlist Item
+ When Amanda enters the Wishlist Item and Description  
+ And Amanda selects a file
+ And Amanda clicks on Save
+ Then the image is displayed in the wish list view

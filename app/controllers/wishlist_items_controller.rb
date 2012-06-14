@@ -14,6 +14,8 @@ class WishlistItemsController < ApplicationController
   # GET /wishlist_items/1.json
   def show
     @wishlist_item = WishlistItem.find(params[:id])
+    
+    @before_images = Image.find(:all, :conditions => { :wishlist_item_id => :id, :image_type => 0 })
 
     respond_to do |format|
       format.html # show.html.erb

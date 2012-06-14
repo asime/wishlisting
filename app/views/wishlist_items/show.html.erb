@@ -17,4 +17,14 @@
 
 
 <%= link_to 'Edit', edit_wishlist_item_path(@wishlist_item) %> |
-<%= link_to 'Back', wishlist_items_path %>
+<%= link_to 'Back', wishlist_items_path %> | 
+<%= link_to 'Images', images_path %>
+
+<p>
+  <b>Before Images</b>
+  <%
+	@before_images.each do |before_image|
+	  puts "Description: #{before_image.description}</br>"
+	end
+  %>
+</p>

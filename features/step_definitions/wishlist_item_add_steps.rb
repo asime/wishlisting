@@ -31,3 +31,11 @@ Then /^the Charity ID, Wishlist Item and Description she entered are shown on th
    page.should have_content("Item: bogus item")
    page.should have_content("Description: bogus desc")
 end
+
+When /^Amanda selects a file$/ do
+   attach_file('image', Rails.root + 'app/assets/images/rails.png')
+end
+
+Then /^the image is displayed in the wish list view$/ do
+  page.should have_content('src="assets/rails.png"')
+end

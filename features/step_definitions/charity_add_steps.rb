@@ -1,5 +1,6 @@
+$homepage = 'http://localhost:3000/' 
 Given /^Amanda is on the Wishlisting home page$/ do
-  visit('http://localhost:3000/')
+  visit($homepage)
 end
 
 Given /^that Amanda has clicked the Add charity button$/ do

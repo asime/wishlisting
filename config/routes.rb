@@ -1,5 +1,7 @@
 Wishlisting::Application.routes.draw do
   
+  resources :images
+
   resources :wishlist_items
 
   resources :charities
