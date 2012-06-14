@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<input id="charity_id" type="hidden" value="<%= @charity.id %>" /> 
+
 <p>
   <b>Charity name:</b>
   <%= @charity.charity_name %>
@@ -32,4 +34,5 @@
 
 
 <%= link_to 'Edit', edit_charity_path(@charity) %> |
-<%= link_to 'Back', charities_path %>
+<%= link_to 'Back', charities_path %> |
+<%= link_to "Add Wishlist Item", {:controller => "wishlist_items", :action => "new"} %>
