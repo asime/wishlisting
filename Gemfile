@@ -53,3 +53,7 @@ group :development, :test do
    gem 'sqlite3'
 end
 gem 'rspec-rails'
+
+group :test do
+	gem 'sqlite3'
+end
