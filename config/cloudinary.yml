@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: wishlisting-org
+  api_key: '753382381295461'
+  api_secret: pfQLLylRCjKz15rPx7Isb4XCYC0
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: wishlisting-org
+  api_key: '753382381295461'
+  api_secret: pfQLLylRCjKz15rPx7Isb4XCYC0
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: wishlisting-org
+  api_key: '753382381295461'
+  api_secret: pfQLLylRCjKz15rPx7Isb4XCYC0
+  enhance_image_tag: true
+  static_image_support: false
