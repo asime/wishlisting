@@ -1,0 +1,40 @@
+<h1>WePay stage test page</h1>
+
+<h2>Step #1 - Send the user to the authorization endpoint</h2>
+<p><i>Source:</i> <a target=_blank href="https://www.wepay.com/developer/tutorial/authorization">https://www.wepay.com/developer/tutorial/authorization</a></p>
+	
+<p>Send user to this URL</p>
+
+<p><a href="https://stage.wepay.com/v2/oauth2/authorize?client_id=130636&redirect_uri=http://localhost:3000/we_pay/test&scope=manage_accounts,view_balance,collect_payments,refund_payments,view_user" target=_blank>https://stage.wepay.com/v2/oauth2/authorize?client_id=130636&redirect_uri=http://www.wishlisting.org/&scope=manage_accounts,view_balance,collect_payments,refund_payments,view_user</a></p>
+
+<p>After they register, they will be sent back to the wishlisting site with a URL like this:</p>
+
+<p>http://localhost:3000/we_pay/test?code=d52c6b7b3b0a34ab30b0d070d62ca2b53782071b574213b326</p>
+
+<p>WePay Code</p>
+<%= text_field_tag(:we_pay_code, params[:code]) %><br/>
+<i>This should populate on return from above authorization endpoint url</i><br/>
+
+<p>Wishisting needs to store that code with the charity in the database</p>
+
+<h2>Pause here and test a checkout with we-pay rails</h2>
+
+<%= form_tag(:controller => "we_pay", :action => "checkout") do %>
+	<div class="actions">
+	    <%= submit_tag("Checkout") %>
+	</div>
+<% end %>
+
+<h2>Step #2 - Exchange a code for an access_token</h2>
+
+<h2>Step #3 - Creating a Payment Account for a User</h2>
+<p><i>Source:</i> <a target=_blank href=" https://www.wepay.com/developer/tutorial/account">https://www.wepay.com/developer/tutorial/account</a></p>
+
+
+<h2>Step #4 - Viewing the account</h2>
+
+
+<h2>Step #5 - Creating a checkout for an account</h2>
+<p><i>Source:</i> <a target=_blank href=" https://www.wepay.com/developer/tutorial/checkout">https://www.wepay.com/developer/tutorial/checkout</a></p>
+
+<h2></h2>

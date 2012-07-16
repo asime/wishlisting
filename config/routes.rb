@@ -1,5 +1,8 @@
 Wishlisting::Application.routes.draw do
   
+  get "we_pay/test"
+  post "we_pay/checkout"
+
   resources :images
 
   resources :wishlist_items
