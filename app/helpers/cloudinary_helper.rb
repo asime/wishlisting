@@ -1,0 +1,2 @@
+module CloudinaryHelper
+end
