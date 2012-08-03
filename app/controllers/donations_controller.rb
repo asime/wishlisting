@@ -41,11 +41,14 @@ class DonationsController < ApplicationController
   # POST /donations.json
   def create
     @donation = Donation.new(params[:donation])
+    @donation.processed = false
 
     respond_to do |format|
       if @donation.save
-        format.html { redirect_to @donation, notice: 'Donation was successfully created.' }
-        format.json { render json: @donation, status: :created, location: @donation }
+        #Hardcoded to AHIP url for the moment
+        redirect_to "http://www.donortownsquare.com/donate_redir.aspx?ai=1358&qs=NMGLN"
+        #format.html { redirect_to @donation, notice: 'Donation was successfully created.' }
+        #format.json { render json: @donation, status: :created, location: @donation }
       else
         format.html { render action: "new" }
         format.json { render json: @donation.errors, status: :unprocessable_entity }

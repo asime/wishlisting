@@ -26,6 +26,7 @@ class CharitiesController < ApplicationController
   # Show the wishlist for a particular charity
   def list
     @charity = Charity.find(params[:id])
+    @donation = Donation.new
 
     respond_to do |format|
       format.html # list.html.erb
