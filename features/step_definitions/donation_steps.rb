@@ -14,8 +14,8 @@ Given /^Amanda sets the charity name to "(.*?)"$/ do |charity_name|
 end
 
 Given /^Amanda visits the wishlist for "(.*?)"$/ do |charity_name|
-  @this_charity = Charity.find_by_charity_name(charity_name)
-  visit($homepage + "list/" + @this_charity.id.to_s)
+  $this_charity = Charity.find_by_charity_name(charity_name)
+  visit($homepage + "list/" + $this_charity.id.to_s)
   page.should have_content(charity_name)
 end
 
@@ -39,3 +39,33 @@ Then /^she should be sent to a DTS URL$/ do
   current_path.should have_content('.aspx')
   #TODO: I should also check that the fields are being passed in the URL
 end
+
+Given /^Amanda has already made a donation$/ do
+  steps %Q{
+      Given Amanda visits the wishlist for "AHIP"
+      When she fills out the donation form
+    	And she clicks donate
+    }
+end
+
+When /^the processor returns to the confirmation URL$/ do
+  #We are going to assume the last donation is the right one
+  @last_donation = Donation.last
+  @last_donation.fname.should == "Cucumber"
+  
+  #We are going to go to this confirmation URL ourselves,
+  #to simulate what the credit card processor should do
+  #Note this assumes the this_charity object is set in previous steps
+  @return_url = $homepage + "list/" + $this_charity.id.to_s + "/return?donation=" + @last_donation.id.to_s
+  puts "Return URL: " + @return_url + " [EOL]"
+  visit(@return_url)
+end
+
+Then /^the donation should be marked as processed$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^Amanda should be sent to the wishlist thanks page$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
