@@ -1,4 +1,4 @@
-class CloudinaryController < ApplicationController
-  def index
-  end
-end
+#class CloudinaryController < ApplicationController
+#  def index
+#  end
+#end
