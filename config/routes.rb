@@ -12,6 +12,8 @@ Wishlisting::Application.routes.draw do
   resources :charities
 
   match 'list/:id/' => 'charities#list'
+  match 'list/:id/return' => 'charities#return'
+  match 'list/:id/thanks' => 'charities#thanks'
 
   #map.connect "home/:action", :controller => 'home', :action => /[a-z]+/i
   

@@ -50,22 +50,26 @@ end
 
 When /^the processor returns to the confirmation URL$/ do
   #We are going to assume the last donation is the right one
-  @last_donation = Donation.last
-  @last_donation.fname.should == "Cucumber"
+  $last_donation = Donation.last
+  $last_donation.fname.should == "Cucumber"
   
   #We are going to go to this confirmation URL ourselves,
   #to simulate what the credit card processor should do
   #Note this assumes the this_charity object is set in previous steps
-  @return_url = $homepage + "list/" + $this_charity.id.to_s + "/return?donation=" + @last_donation.id.to_s
+  @return_url = $homepage + "list/" + $this_charity.id.to_s + "/return?donation=" + $last_donation.id.to_s
   puts "Return URL: " + @return_url + " [EOL]"
   visit(@return_url)
 end
 
 Then /^the donation should be marked as processed$/ do
-  pending # express the regexp above with the code you wish you had
+  $last_donation = Donation.find($last_donation.id)
+  $last_donation.processed.should == true
 end
 
 Then /^Amanda should be sent to the wishlist thanks page$/ do
-  pending # express the regexp above with the code you wish you had
+  current_path.should have_content('thanks')
+  page.should have_content $last_donation.fname
+  page.should have_content $last_donation.amount
+  page.should have_content $this_charity.charity_name
 end
 
