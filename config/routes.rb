@@ -1,15 +1,17 @@
 Wishlisting::Application.routes.draw do
   
+  resources :donations
+
   get "cloudinary/index"
 
   get "we_pay/test"
   post "we_pay/checkout"
 
   resources :images
-
   resources :wishlist_items
-
   resources :charities
+
+  match 'list/:id/' => 'charities#list'
 
   #map.connect "home/:action", :controller => 'home', :action => /[a-z]+/i
   

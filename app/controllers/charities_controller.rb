@@ -20,6 +20,18 @@ class CharitiesController < ApplicationController
       format.json { render json: @charity }
     end
   end
+  
+  # GET /charities/1
+  # GET /charities/1.json
+  # Show the wishlist for a particular charity
+  def list
+    @charity = Charity.find(params[:id])
+
+    respond_to do |format|
+      format.html # list.html.erb
+      format.json { render json: @charity }
+    end
+  end
 
   # GET /charities/new
   # GET /charities/new.json
