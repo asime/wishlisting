@@ -1,14 +1,55 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Wishlisting</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+<!doctype html style=" background:#fff;">
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<meta charset="UTF-8">
+    
+    <!--SEO HEAD TAGS-->
+    <title>Wishlisting.org</title><!--POST TITLE-->
+	
+    <meta name="keywords" content="EDIT"><!--EDIT-->
+    <meta name="description" content="EDIT"><!--EDIT-->
+    <meta name="author" content="POST AUTHOR"><!--POST AUTHOR-->
+	<!--//SEO HEAD TAGS-->
+      
+    <link rel="icon" href="favicon.ico">  
+    
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+
+    <!--GOOGLE FONT-->
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
+    <!--//GOOGLE FONT-->
+    
+	<%= stylesheet_link_tag "gridSystem" %>
+	<%= stylesheet_link_tag "style" %>
+	
+	<%= javascript_include_tag "libs/modernizr-2.5.3.min.js" %>
+	<%= javascript_include_tag "jquery" %>
+
+	<style>
+    	html, body{background:#fff;}
+    </style>
 </head>
 <body>
 
 <%= yield %>
+
+<!--ANALYTICS-->
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', '######']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
 
 </body>
 </html>

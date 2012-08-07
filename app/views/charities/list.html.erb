@@ -1,3 +1,133 @@
+<!--PIECHART PLUGIN-->
+<script src="assets/js/pieChart.js"></script>
+<!--//PIECHART PLUGIN-->
+
+<!--PRODUCT PAGE WRAP-->
+<div class="ppWrap">
+	
+    <!--PP TOP BAR-->
+    <div class="ppTopBar ppBoxWrap">
+    	<a href="#" class="breadcrumb">Browse</a>
+        <span class="breadcrumb"> - A new Roof for the Smith's</span>
+    </div>
+    <!--//PP TOP BAR-->
+
+	<!--PP INFO WRAP-->
+    <div class="ppInfo ppBoxWrap">
+        
+        <!--IMAGES-->
+        <div class="ppSlide">
+        	<div class="mainImg">
+            	<a href="#"><img alt="thumb" src="assets/testImg/02.jpg"/></a>
+            </div>
+            <div class="ppThumbWrap">
+            	<a href="#"><img alt="thumb" src="assets/testImg/02.jpg"/></a>
+            	<a href="#"><img alt="thumb" src="assets/testImg/01.jpg"/></a>
+            	<a href="#"><img alt="thumb" src="assets/testImg/03.jpg"/></a>
+            	<a href="#"><img alt="thumb" src="assets/testImg/05.jpg"/></a>
+            	<a href="#"><img alt="thumb" src="assets/testImg/06.jpg"/></a>
+            	<a href="#"><img alt="thumb" src="assets/testImg/07.jpg"/></a>
+            </div>
+        </div>
+        <!--//IMAGES-->
+        
+        <!--INFO-->
+        <div class="ppTextWarp">
+        	<div class="ppMain">
+        		<h1>Organization: <span><%= @charity.charity_name %></span></h1>
+            	<p>AHIP is one of central Virginia’s oldest, most effective and most respected non-profit housing organizations.</p>
+
+				<p>Since 1976, we have assisted more than 3,500 low-income people with home repairs. For families who have nothing left at the end of the month, a broken water heater or a leaky roof can be a disaster.  That is where AHIP comes in.</p>
+        	</div>
+            <div class="floatClear"></div>
+        	<div class="ppAbout">
+        		<h2>About</h2>
+            	<p>Cupcake marzipan icing wypas gummi ears wypas jelly beans. Toffee sesame snaps sugar plum caramels apple pie.</p>
+            	<p>Cupcake marzipan icing wypas gummi ears wypas jelly beans. Toffee sesame snaps sugar plum caramels apple pie.</p>
+        	</div>
+        </div>
+        <!--/INFO-->
+    </div>
+    <!--//PP INFO WRAP-->
+    
+    <!--PP DONATION BOARD-->
+    <div class="donationBoard">
+    	
+        <div class="trackList ppBoxWrap">
+            <!--PIECHART-->
+            <div class="piechart">
+                <div class="pieHolder">
+                	<span>75.00%</span>
+                    <canvas id="piechart" width="60" height="60"></canvas>
+                </div>
+            </div>
+            <!--//PIECHART-->
+            
+            <div class="chartDiv"></div><!--CHART DIVIER-->
+            
+            <!--TERMOMETER CHART-->
+        	<div class="termometerChart">
+            	<span>$1000</span>
+                <!--TERMOMETER WRAP-->
+                <div class="termometerWrap">
+                    
+                    <!--TERMOMETER BG-->
+                    <div class="termometerBg">
+                        <div class="progress"  style="width:75%"></div><!--USE STYLE TO CONTRO PROGRESS-->
+                    </div>
+                    <!--//TERMOMETER BG-->
+					<span class="right">Needs $250</span><!--NEEDS INFO-->
+                </div>
+                <!--//TERMOMETER WRAP-->
+            </div> 
+			<!--//TERMOMETER CHART-->
+        </div>
+        <!--//PIECHART-->
+        
+        <!--DONATION FORM-->
+        <div class="donationform ppBoxWrap">
+        	<h1>Donate</h1>
+        	<form>
+            	<input name="donationamount" type="text" value="">
+            	<input name="preDonation" class="textButton" type="button" value="Donate $50">
+            	<input name="submitQuery" type="submit" value="">
+            </form>            
+        </div>
+        <!--DONATION FORM-->
+
+    </div>
+    <!--//PP DONATION BOARD-->
+  	
+    <div class="floatClear"></div>
+
+</div>
+<!--//PRODUCT PAGE WRAP-->
+
+<!--PIE CHART-->
+<script type="text/javascript">
+	window.onload = createPieChart;
+	function createPieChart() {
+	var pieChart = new PieChart( "piechart",
+	{
+	includeLabels: true,
+	data: [60, 300],
+	labels: [],
+	colors: [
+				 ["#c47c79", "#c47c79"],
+				 ["#a63936", "#a63936"]
+	]
+	}
+	);
+	pieChart.draw();
+	}
+</script>
+<!--PIE CHART-->
+
+
+
+<!-- Original html below -->
+
+
 <p id="notice"><%= notice %></p>
 
 <input id="charity_id" type="hidden" value="<%= @charity.id %>" /> 
