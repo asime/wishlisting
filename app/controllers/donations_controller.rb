@@ -43,22 +43,16 @@ class DonationsController < ApplicationController
     @donation = Donation.new(params[:donation])
     @donation.processed = false
 
-    #respond_to do |format|
-      if @donation.save
-        #Hardcoded to test URL
-        @url_to_donate = "https://secure.donortownsquare.com/SSL/process.aspx?ai=1349&qs=TYBNV&amt=" + @donation.amount.to_s + "&fn=" + @donation.fname + "&ln=" + @donation.lname + "&s1=" + @donation.street1 + "&c=" + @donation.city + "&s=" + @donation.state + "&z=" + @donation.postal + "&e=" + @donation.email + "&ret=http%3A%2F%2Flocalhost%3A3000%2Flist%2F1%2Freturn%3Fdonation%3D" + @donation.id.to_s
-        puts "Donation URL: " + @url_to_donate
-        redirect_to @url_to_donate
-        
-        #Hardcoded to AHIP url for the moment
-        #redirect_to "http://www.donortownsquare.com/donate_redir.aspx?ai=1358&qs=NMGLN"
-        #format.html { redirect_to @donation, notice: 'Donation was successfully created.' }
-        #format.json { render json: @donation, status: :created, location: @donation }
-      else
-        #format.html { render action: "new" }
-        #format.json { render json: @donation.errors, status: :unprocessable_entity }
-      end
-    #end
+    if @donation.save
+      #Hardcoded to test URL
+      @url_to_donate = "https://secure.donortownsquare.com/SSL/process.aspx?ai=1349&qs=TYBNV&amt=" + @donation.amount.to_s + "&fn=" + @donation.fname + "&ln=" + @donation.lname + "&s1=" + @donation.street1 + "&c=" + @donation.city + "&s=" + @donation.state + "&z=" + @donation.postal + "&e=" + @donation.email + "&ret=http%3A%2F%2Flocalhost%3A3000%2Flist%2F1%2Freturn%3Fdonation%3D" + @donation.id.to_s
+      puts "Donation URL: " + @url_to_donate
+      redirect_to @url_to_donate
+    else
+      render action: "new"
+      #format.html { render action: "new" }
+      #format.json { render json: @donation.errors, status: :unprocessable_entity }
+    end
   end
 
   # PUT /donations/1
