@@ -64,4 +64,10 @@ Wishlisting::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  config.assets.precompile += %w( gridSystem.css )
+  config.assets.precompile += %w( style.css )
+  config.assets.precompile += %w( ie7.css )
+  config.assets.precompile += %w( ie8-and-down.css )
+  
 end
