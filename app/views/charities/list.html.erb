@@ -4,11 +4,11 @@
 
 <!--PRODUCT PAGE WRAP-->
 <div class="ppWrap">
+	<%= image_tag "logoMain.png", :alt => "Wishlisting.org", :class=>"header_logo" %>
 	
     <!--PP TOP BAR-->
     <div class="ppTopBar ppBoxWrap">
-    	<a href="#" class="breadcrumb">Browse</a>
-        <span class="breadcrumb"> - A new Roof for the Smith's</span>
+    	<a href="http://www.ahipva.org/"><%= image_tag "AHIP_header_825.jpg", :alt => "Albemarle Housing Improvement Program" %></a>
     </div>
     <!--//PP TOP BAR-->
 
@@ -35,15 +35,54 @@
         <div class="ppTextWarp">
         	<div class="ppMain">
         		<h1>Organization: <span><%= @charity.charity_name %></span></h1>
-            	<p>AHIP is one of central Virginia’s oldest, most effective and most respected non-profit housing organizations.</p>
-
-				<p>Since 1976, we have assisted more than 3,500 low-income people with home repairs. For families who have nothing left at the end of the month, a broken water heater or a leaky roof can be a disaster.  That is where AHIP comes in.</p>
+            	<p>Since 1976, AHIP has assisted more than 3,500 low-income people with home repairs. For families who have nothing left at the end of the month, a broken water heater or a leaky roof can be a disaster.  That is where AHIP comes in.</p>
         	</div>
-            <div class="floatClear"></div>
         	<div class="ppAbout">
-        		<h2>About</h2>
-            	<p>Cupcake marzipan icing wypas gummi ears wypas jelly beans. Toffee sesame snaps sugar plum caramels apple pie.</p>
-            	<p>Cupcake marzipan icing wypas gummi ears wypas jelly beans. Toffee sesame snaps sugar plum caramels apple pie.</p>
+        		<h1>Donate Now!</h1>
+            	
+				<p id="notice"><%= notice %></p>
+
+				<input id="charity_id" type="hidden" value="<%= @charity.id %>" /> 
+
+				<p>
+
+					<%= form_for(@donation) do |f| %>
+					  <% if @donation.errors.any? %>
+					    <div id="error_explanation">
+					      <h2><%= pluralize(@donation.errors.count, "error") %> prohibited this donation from being saved:</h2>
+
+					      <ul>
+					      <% @donation.errors.full_messages.each do |msg| %>
+					        <li><%= msg %></li>
+					      <% end %>
+					      </ul>
+					    </div>
+					  <% end %>
+					
+					  <div class="field">
+					    <%= f.text_field :amount, :size=>"15", :class=>"amountField" %>
+					  </div>
+					  <div class="field">
+					    <%= f.label :fname, "your name" %><br />
+					    <%= f.text_field :fname, :size=>"20" %>&nbsp;<%= f.text_field :lname, :size=>"20" %>
+					  </div>
+					  
+					  <div class="field">
+					    <%= f.label :street1, "address" %><br />
+					    <%= f.text_field :street1, :size=>"20" %>&nbsp;<%= f.text_field :street2, :size=>"20" %>
+					  </div>
+					  <div class="field">
+					    <%= f.text_field :city, :size=>"20"%>, <%= f.text_field :state, :size=>"5" %>&nbsp;<%= f.text_field :postal, :size=>"5" %>
+					  </div>
+					  <div class="field">
+					    <%= f.label :email, "email address" %><br />
+					    <%= f.text_field :email %>&nbsp;&nbsp;<%= f.submit text="Donate !" %>
+					  </div>
+					<% end %>
+
+				</p>
+
+
         	</div>
         </div>
         <!--/INFO-->
@@ -65,33 +104,28 @@
             
             <div class="chartDiv"></div><!--CHART DIVIER-->
             
-            <!--TERMOMETER CHART-->
-        	<div class="termometerChart">
-            	<span>$1000</span>
-                <!--TERMOMETER WRAP-->
-                <div class="termometerWrap">
+            <!--THERMOMETER CHART-->
+        	<div class="thermometerChart">
+            	<span>$1000</span><br/><br/>
+                <!--THERMOMETER WRAP-->
+                <div class="thermometerWrap">
                     
-                    <!--TERMOMETER BG-->
-                    <div class="termometerBg">
-                        <div class="progress"  style="width:75%"></div><!--USE STYLE TO CONTRO PROGRESS-->
+                    <!--THERMOMETER BG-->
+                    <div class="thermometerBg">
+                        <div class="progress"  style="width:75%"></div><!--USE STYLE TO CONTROL PROGRESS-->
                     </div>
-                    <!--//TERMOMETER BG-->
+                    <!--//THERMOMETER BG-->
 					<span class="right">Needs $250</span><!--NEEDS INFO-->
                 </div>
-                <!--//TERMOMETER WRAP-->
+                <!--//THERMOMETER WRAP-->
             </div> 
-			<!--//TERMOMETER CHART-->
+			<!--//THERMOMETER CHART-->
         </div>
         <!--//PIECHART-->
         
         <!--DONATION FORM-->
         <div class="donationform ppBoxWrap">
-        	<h1>Donate</h1>
-        	<form>
-            	<input name="donationamount" type="text" value="">
-            	<input name="preDonation" class="textButton" type="button" value="Donate $50">
-            	<input name="submitQuery" type="submit" value="">
-            </form>            
+        	asdf            
         </div>
         <!--DONATION FORM-->
 
@@ -123,82 +157,3 @@
 </script>
 <!--PIE CHART-->
 
-
-
-<!-- Original html below -->
-
-
-<p id="notice"><%= notice %></p>
-
-<input id="charity_id" type="hidden" value="<%= @charity.id %>" /> 
-
-<p>
-	Here is how you donate to <%= @charity.charity_name %>!
-	
-	<a href="	http://www.donortownsquare.com/donate_redir.aspx?ai=1358&qs=NMGLN">Donate here!</a>
-	
-	Or fill out this form:
-	
-	<%= form_for(@donation) do |f| %>
-	  <% if @donation.errors.any? %>
-	    <div id="error_explanation">
-	      <h2><%= pluralize(@donation.errors.count, "error") %> prohibited this donation from being saved:</h2>
-
-	      <ul>
-	      <% @donation.errors.full_messages.each do |msg| %>
-	        <li><%= msg %></li>
-	      <% end %>
-	      </ul>
-	    </div>
-	  <% end %>
-
-	  <div class="field">
-	    <%= f.label :fname %><br />
-	    <%= f.text_field :fname %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :lname %><br />
-	    <%= f.text_field :lname %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :amount %><br />
-	    <%= f.text_field :amount %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :street1 %><br />
-	    <%= f.text_field :street1 %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :street2 %><br />
-	    <%= f.text_field :street2 %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :city %><br />
-	    <%= f.text_field :city %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :state %><br />
-	    <%= f.text_field :state %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :postal %><br />
-	    <%= f.text_field :postal %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :email %><br />
-	    <%= f.text_field :email %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :phone %><br />
-	    <%= f.text_field :phone %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :processed %><br />
-	    <%= f.check_box :processed %>
-	  </div>
-	  <div class="actions">
-	    <%= f.submit text="Donate!" %>
-	  </div>
-	<% end %>
-	
-</p>

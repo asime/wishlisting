@@ -33,7 +33,7 @@ a:hover, a:active { outline: 0; }
 LIST ITEM RESET
 ***************************************************************/
 ul, ol {padding:10px 0 0 0; }
-li{ background:url(../img/iconLiStar.png) top left no-repeat; padding:2px 0 0 25px; list-style:none; margin:8px 0;}
+li{ background:url(/assets/iconLiStar.png) top left no-repeat; padding:2px 0 0 25px; list-style:none; margin:8px 0;}
 nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
 
 /***************************************************************
@@ -77,7 +77,7 @@ html, body{
 	width:100%;
 }
 html{
-	background:url(../img/htmlBgPattern.png) repeat #5a8cb3;
+	background:url(/assets/htmlBgPattern.png) repeat #5a8cb3;
 }
 .floatClear{
 	width:100%;
@@ -133,7 +133,7 @@ BTN STYLE
 	font-family: 'Oswald', sans-serif;
 	font-weight:400;
 	text-decoration:none;
-	background: url(../img/btnBgPattern.png) center repeat-x #eaeaea;
+	background: url(/assets/btnBgPattern.png) center repeat-x #eaeaea;
 	border:1px solid #d9d9d9;
 	border-bottom:1px solid #b1b1b1;
 	margin:0;
@@ -206,14 +206,14 @@ div.submitWrap:hover{
 	box-shadow: 0 0 1px rgba(0,0,0,.2);
 }
 input[type='submit']{
-	font-size:10px;
-	line-height:12px;
+	font-size:14px;
+	line-height:14px;
 	font-family: 'Oswald', sans-serif;
 	text-transform:uppercase;
 	color:#777a77;
 	padding:0 5px;
 	margin:0 0 5px 8px;
-	border:none;
+	border: solid 1px;
 	outline:none;
 	background-color:transparent;
 }
@@ -250,7 +250,7 @@ TOOL TIP
 	position:absolute;
 	top:-200px; 
 	display:none;
-	background:transparent url(../img/tooltipBg.png) bottom center no-repeat;
+	background:transparent url(/assets/tooltipBg.png) bottom center no-repeat;
 	background-position:center 22px;
 	font-size:11px; line-height:1.5;
 	text-align:left;
@@ -284,11 +284,11 @@ TOOL TIP
 	margin:0;
 	overflow:hidden;
 }	
-.tooltipThumbs .termometerWrap .termometerBg{
+.tooltipThumbs .thermometerWrap .thermometerBg{
 	margin:0;
 	height:14px;
 } 
-.tooltipThumbs .termometerWrap .progress{
+.tooltipThumbs .thermometerWrap .progress{
 	height:14px;
 }
 /*Cart Tooltip*/
@@ -296,7 +296,7 @@ TOOL TIP
 	position:absolute;
 	top:104px; 
 	display:none;
-	background:transparent url(../img/tooltipCartBg.png) top center no-repeat;
+	background:transparent url(/assets/tooltipCartBg.png) top center no-repeat;
 	font-size:11px; line-height:1.5;
 	text-align:left;
 	height:95px;
@@ -372,12 +372,12 @@ TOOL TIP
 .tooltipCart .checkOutBtn{
 	width:64px;
 	height:24px;
-	background:url(../img/checkOutBtn.png) top center no-repeat;
+	background:url(/assets/checkOutBtn.png) top center no-repeat;
 	border:none;
 	float:right;
 }
 .tooltipCart .checkOutBtn:hover{
-	background:url(../img/checkOutBtn.png) bottom center no-repeat;
+	background:url(/assets/checkOutBtn.png) bottom center no-repeat;
 }
 
 /***************************************************************
@@ -386,12 +386,12 @@ HEADER STYLE
 header{
 	min-width:1024px;
 	height: 105px;
-	background: url(../img/headerBg.png) repeat-x;
+	background: url(/assets/headerBg.png) repeat-x;
 }
 header .logo{
 	width:270px;
 	height:58px;
-	background:url(../img/logoMain.png) left center;
+	background:url(/assets/logoMain.png) left center;
 	float:left;
 	margin-left: 1%;
 	margin-right: 1%;
@@ -430,7 +430,7 @@ nav.secondary a:hover{
 	color:#9f9f9f;
 }
 header nav.secondary a.cartView{
-	background:url(../img/cartView.png) right top no-repeat;
+	background:url(/assets/cartView.png) right top no-repeat;
 	padding-right:22px;
 	border:none;
 }
@@ -440,26 +440,26 @@ nav.secondary a.cartView:hover{
 }
 
 /***************************************************************
-TERMOMETER STYLE
+THERMOMETER STYLE
 ***************************************************************/
-.termometerWrap{
+.thermometerWrap{
 	height:40px;
-	margin-top:10px;
+	margin-top:20px;
 }
-.termometerBg{
+.thermometerBg{
 	width:100%;
 	height:20px;
 	background:#95abb3;
 }
-.termometerBg .progress{
+.thermometerBg .progress{
 	height:20px;
 	background:#4e7380;
 }
-.termometerWrap span.left{
+.thermometerWrap span.left{
 	text-align:left;
 	font-size:12px;
 }
-.termometerWrap span.right{
+.thermometerWrap span.right{
 	text-align:right;
 	float:right;
 	font-size:12px;
@@ -471,7 +471,7 @@ BODY STYLE
 ***************************************************************/
 .bodyWrap{
 	min-width:1024px;
-	background: url(../img/bodyBg.png) repeat #e5e4dc;
+	background: url(/assets/bodyBg.png) repeat #e5e4dc;
 }
 
 /*SHOWCASE*/
@@ -492,7 +492,7 @@ BODY STYLE
 .showcase .imgFooter{
 	width:100%;
 	height:14px;
-	background:url(../img/thumbFooter.png) top center;
+	background:url(/assets/thumbFooter.png) top center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -594,26 +594,26 @@ h1{
 	box-shadow: 0 0 1px rgba(0,0,0,.5);
 }
 a.pagFirst{
-	background:url(../img/pagFirst.png) top center;
+	background:url(/assets/pagFirst.png) top center;
 }
 a.pagFirst:hover{
 	background-position:bottom center;
 }
 
 a.pagPrev{
-	background:url(../img/pagPrev.png) top center;
+	background:url(/assets/pagPrev.png) top center;
 }
 a.pagPrev:hover{
 	background-position:bottom center;
 }
 a.pagLast{
-	background:url(../img/pagLast.png) bottom center;
+	background:url(/assets/pagLast.png) bottom center;
 }
 a.pagLast:hover{
 	background-position:top center;
 }
 a.pagNext{
-	background:url(../img/pagNext.png) bottom center;
+	background:url(/assets/pagNext.png) bottom center;
 }
 a.pagNext:hover{
 	background-position:top center;
@@ -674,15 +674,15 @@ h1.boxHeader{
 	height:170px;
 }
 .iconSearch{
-	background:url(../img/searchIcon.png) no-repeat rgba(255,255,255,.5);
+	background:url(/assets/searchIcon.png) no-repeat rgba(255,255,255,.5);
 	background-position:right 40px;
 }
 .iconDonate{
-	background: url(../img/donateIcon.png) no-repeat rgba(255,255,255,.5);
+	background: url(/assets/donateIcon.png) no-repeat rgba(255,255,255,.5);
 	background-position:right 40px;
 }
 .iconAction{
-	background:url(../img/progressIcon.png) no-repeat rgba(255,255,255,.5);
+	background:url(/assets/progressIcon.png) no-repeat rgba(255,255,255,.5);
 	background-position:right 40px;
 }
 .icon span{
@@ -741,7 +741,7 @@ h1.boxHeader{
 .featureSuccess .infoHolder .featFoot{
 	margin-top:20px;
 }
-.featureSuccess .infoHolder .featFoot .termometerWrap{	
+.featureSuccess .infoHolder .featFoot .thermometerWrap{	
 	width:55%;
 	float:left;
 }
@@ -799,12 +799,12 @@ h1.boxHeader{
 .whantToHelp form.addCharity input.sumitRegister{
 	width:200px;
 	height:50px;
-	background:url(../img/registerOrgSubmit.png) top center;
+	background:url(/assets/registerOrgSubmit.png) top center;
 	text-align:center;
 	margin:25px 0;
 }
 .whantToHelp form.addCharity input.sumitRegister:hover{
-	background:url(../img/registerOrgSubmit.png) bottom center;
+	background:url(/assets/registerOrgSubmit.png) bottom center;
 }
 /***************************************************************
 FOOTER STYLE
@@ -812,7 +812,7 @@ FOOTER STYLE
 footer{
 	min-width:1025px;
 	height:20px;
-	background:url(../img/footerBg.png) top repeat-x;
+	background:url(/assets/footerBg.png) top repeat-x;
 }
 
 
@@ -934,10 +934,10 @@ PROJECT PAGE
 	margin-bottom:10px;
 }
 .ppTextWarp .ppMain{
-	height:190px;
+	height:120px;
 }
 .ppTextWarp .ppAbout{
-	height:190px;
+	height:260px;
 }
 
 /*DONATION BOARD*/
@@ -954,7 +954,7 @@ PROJECT PAGE
 .chartDiv{
 	width:190px;
 	height:1px;
-	margin:5px auto;
+	margin:10px auto;
 	background:#cccccc;
 }
 
@@ -972,28 +972,28 @@ PROJECT PAGE
 }
 
 /*TERMOMETER*/
-.donationBoard .trackList .termometerChart{
+.donationBoard .trackList .thermometerChart{
 	padding:0 10px;
 }
-.donationBoard .trackList .termometerChart span{
+.donationBoard .trackList .thermometerChart span{
 	font-family:'Oswald';
 	color:#b44c49;
 	font-size:36px;
 }
-.donationBoard .trackList .termometerChart .termometerWrap{
+.donationBoard .trackList .thermometerChart .thermometerWrap{
 	margin:0;
 }
-.donationBoard .trackList .termometerChart .termometerWrap span{
+.donationBoard .trackList .thermometerChart .thermometerWrap span{
 	font-family:'Poiret One';
 	font-size:14px;
 	color:#342d2d;
 }
-.donationBoard .trackList .termometerChart .termometerWrap .termometerBg{
+.donationBoard .trackList .thermometerChart .thermometerWrap .thermometerBg{
 	width:100%;
 	height:20px;
 	background:#c47c79;
 }
-.donationBoard .trackList .termometerChart .termometerWrap .termometerBg .progress{
+.donationBoard .trackList .thermometerChart .thermometerWrap .thermometerBg .progress{
 	height:20px;
 	background:#a63936;
 }
@@ -1013,16 +1013,32 @@ PROJECT PAGE
 	text-align:left;
 	padding-left:25px;
 	width:160px;
-	background:url(../img/donateSign.png) no-repeat;
+	background:url(/assets/donateSign.png) no-repeat;
 	background-position:10px -23px;
 	font-family:'Oswald';
 	color:#5a8cb3;
 }
 .donationBoard .donationform form input:focus[type="text"]{
 	color:#6ab142;
-	background:url(../img/donateSign.png) no-repeat #f4fafe;
+	background:url(/assets/donateSign.png) no-repeat #f4fafe;
 	background-position:10px 1px;
 }
+
+input#donation_amount.amountField {
+	text-align:left;
+	padding-left:25px;
+	width:160px;
+	background:url(/assets/donateSign.png) no-repeat;
+	background-position:10px -23px;
+	font-family:'Oswald';
+	color:#5a8cb3;
+}
+input:focus#donation_amount.amountField {
+	color:#6ab142;
+	background:url(/assets/donateSign.png) no-repeat #f4fafe;
+	background-position:10px 1px;
+}
+
 .donationBoard .donationform form input[type="button"]{
 	border:none;
 	outline:none;
@@ -1037,7 +1053,7 @@ PROJECT PAGE
 	width:170px;
 	height:45px;
 	margin:20px auto 0;
-	background: url(../img/addDonationSubmit.png) top center;
+	background: url(/assets/addDonationSubmit.png) top center;
 	outline:none;
 	border:none;
 }
@@ -1114,10 +1130,10 @@ PROJECT PAGE
 	top:50%; 
 	left:-2px;
 	margin-top:-100px;
-	background: url(../img/modalControl.png) top left no-repeat;
+	background: url(/assets/modalControl.png) top left no-repeat;
 }
 #cboxPrevious:hover{
-	background: url(../img/modalControl.png) bottom left no-repeat;
+	background: url(/assets/modalControl.png) bottom left no-repeat;
 }
 #cboxNext{
 	width:56px;
@@ -1126,17 +1142,17 @@ PROJECT PAGE
 	left:100%;
 	margin-left:-55px;
 	margin-top:-100px;
-	background: url(../img/modalControl.png) top right no-repeat;
+	background: url(/assets/modalControl.png) top right no-repeat;
 }
 #cboxNext:hover{
-	background: url(../img/modalControl.png) bottom right no-repeat;
+	background: url(/assets/modalControl.png) bottom right no-repeat;
 }
 #cboxClose{
 	top:55px;
 	right:85px;
 	width:20px;
 	height:20px;
-	background:url(../img/closeBtn.png) bottom center;
+	background:url(/assets/closeBtn.png) bottom center;
 	float:right;
 	margin:5px;
 }
