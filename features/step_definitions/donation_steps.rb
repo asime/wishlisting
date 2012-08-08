@@ -11,11 +11,12 @@ end
 
 Given /^Amanda sets the charity name to "(.*?)"$/ do |charity_name|
   fill_in "charity_charity_name", :with => charity_name
+  fill_in "charity_short_name", :with => charity_name
 end
 
 Given /^Amanda visits the wishlist for "(.*?)"$/ do |charity_name|
   $this_charity = Charity.find_by_charity_name(charity_name)
-  visit($homepage + "list/" + $this_charity.id.to_s)
+  visit($homepage + "list/" + $this_charity.short_name)
   page.should have_content(charity_name)
 end
 
@@ -26,13 +27,12 @@ When /^she fills out the donation form$/ do
   fill_in "donation_city", :with => 'Crozet'
   fill_in "donation_state", :with => 'VA'
   fill_in "donation_postal", :with => '22932'
-  fill_in "donation_phone", :with => '434-996-5226'
   fill_in "donation_email", :with => 'Arin@ArinSime.com'
   fill_in "donation_amount", :with => '19.99'
 end
 
 When /^she clicks donate$/ do
-  click_button('Donate!')
+  click_button('Donate !')
 end
 
 Then /^she should be sent to a DTS URL$/ do
@@ -56,7 +56,7 @@ When /^the processor returns to the confirmation URL$/ do
   #We are going to go to this confirmation URL ourselves,
   #to simulate what the credit card processor should do
   #Note this assumes the this_charity object is set in previous steps
-  @return_url = $homepage + "list/" + $this_charity.id.to_s + "/return?donation=" + $last_donation.id.to_s
+  @return_url = $homepage + "list/" + $this_charity.short_name + "/return?donation=" + $last_donation.id.to_s
   puts "Return URL: " + @return_url + " [EOL]"
   visit(@return_url)
 end

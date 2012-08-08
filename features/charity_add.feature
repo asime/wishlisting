@@ -6,10 +6,12 @@ Background:
  Given Amanda is on the Wishlisting home page
   And that Amanda has clicked the Add charity button
 
+@add_charity
 Scenario: Display the add charity form
  Then she should see a webform
  And where she can add the charity name and all applicable fields
 
+@add_charity
 Scenario: Add charity
  Given that Amanda has filled in all the fields
  When she clicks on Add button

@@ -10,7 +10,7 @@ Scenario: Load the donation form and transfer to DTS
 	And she clicks donate
 	Then she should be sent to a DTS URL
 	
-@dts
+@dts @wip
 Scenario: Mark a donation as processed when it is returned by DTS
 	Given Amanda has already made a donation
 	When the processor returns to the confirmation URL

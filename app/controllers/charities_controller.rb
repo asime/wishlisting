@@ -25,7 +25,7 @@ class CharitiesController < ApplicationController
   # GET /charities/1.json
   # Show the wishlist for a particular charity
   def list
-    @charity = Charity.find(params[:id])
+    @charity = Charity.find_by_short_name(params[:short_name])
     @donation = Donation.new
 
     respond_to do |format|

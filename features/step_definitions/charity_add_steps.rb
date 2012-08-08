@@ -28,6 +28,7 @@ end
 
 Given /^that Amanda has filled in all the fields$/ do
   fill_in "charity_charity_name", :with => 'Charity1 Name'
+  fill_in "charity_short_name", :with => 'AHIP'
   fill_in 'charity_contact_name', :with => 'Charity1 Contact'
   fill_in 'charity_email', :with => 'Charity1@email.com'
   fill_in 'charity_login', :with => 'Charity1_Login'
@@ -41,6 +42,7 @@ end
 
 Then /^A successful message is displayed with the charity information$/ do
   page.should have_content("Charity name: Charity1 Name")
+  page.should have_content("AHIP")
   page.should have_content("Contact name: Charity1 Contact")
   page.should have_content("Email: Charity1@email.com")
   page.should have_content("Login: Charity1_Login")

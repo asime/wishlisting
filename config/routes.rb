@@ -11,7 +11,7 @@ Wishlisting::Application.routes.draw do
   resources :wishlist_items
   resources :charities
 
-  match 'list/:id/' => 'charities#list'
+  match 'list/:short_name/' => 'charities#list'
   match 'list/:id/return' => 'charities#return'
   match 'list/:id/thanks' => 'charities#thanks'
 
