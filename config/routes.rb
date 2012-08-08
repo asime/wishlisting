@@ -13,8 +13,8 @@ Wishlisting::Application.routes.draw do
 
   match 'list/:short_name/' => 'charities#list'
   match 'not_found/:short_name/' => 'charities#not_found'
-  match 'list/:id/return' => 'charities#return'
-  match 'list/:id/thanks' => 'charities#thanks'
+  match 'list/:short_name/return' => 'charities#return'
+  match 'list/:short_name/thanks' => 'charities#thanks'
 
   #map.connect "home/:action", :controller => 'home', :action => /[a-z]+/i
   

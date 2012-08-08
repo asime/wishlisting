@@ -43,23 +43,32 @@ class CharitiesController < ApplicationController
   # GET /charities/1.json
   # Show the wishlist for a particular charity
   def return
-    @charity = Charity.find(params[:id])
-    @donation = Donation.find(params[:donation])
-    @donation.processed = true
-    @donation.save
-    redirect_to '/list/' + @charity.id.to_s + '/thanks?donation=' + @donation.id.to_s
+    @charity = Charity.find(params[:short_name])
+    if @charity.nil?
+      redirect_to '/not_found/' + params[:short_name]
+    else
+      @donation = Donation.find(params[:donation])
+      @donation.processed = true
+      @donation.save
+      redirect_to '/list/' + @charity.short_name + '/thanks?donation=' + @donation.id.to_s
+    end
   end
   
   # GET /charities/1
   # GET /charities/1.json
   # Show the wishlist for a particular charity
   def thanks
-    @charity = Charity.find(params[:id])
-    @donation = Donation.find(params[:donation])
+    @charity = Charity.find(params[:short_name])
+    
+    if @charity.nil?
+      redirect_to '/not_found/' + params[:short_name]
+    else
+      @donation = Donation.find(params[:donation])
 
-    respond_to do |format|
-      format.html # list.html.erb
-      format.json { render json: @charity }
+      respond_to do |format|
+        format.html # list.html.erb
+        format.json { render json: @charity }
+      end
     end
   end
 
