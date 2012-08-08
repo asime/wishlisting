@@ -45,7 +45,9 @@ class DonationsController < ApplicationController
 
     if @donation.save
       #Hardcoded to test URL
-      @url_to_donate = "https://secure.donortownsquare.com/SSL/process.aspx?ai=1349&qs=TYBNV&amt=" + @donation.amount.to_s + "&fn=" + @donation.fname + "&ln=" + @donation.lname + "&s1=" + @donation.street1 + "&c=" + @donation.city + "&s=" + @donation.state + "&z=" + @donation.postal + "&e=" + @donation.email + "&ret=http%3A%2F%2Flocalhost%3A3000%2Flist%2F1%2Freturn%3Fdonation%3D" + @donation.id.to_s
+      #base url: https://secure.donortownsquare.com/SSL/process.aspx?ai=1349&qs=TYBNV
+      #will come from @charity.dts_url
+      @url_to_donate = "&amt=" + @donation.amount.to_s + "&fn=" + @donation.fname + "&ln=" + @donation.lname + "&s1=" + @donation.street1 + "&c=" + @donation.city + "&s=" + @donation.state + "&z=" + @donation.postal + "&e=" + @donation.email + "&ret=http%3A%2F%2Flocalhost%3A3000%2Flist%2F1%2Freturn%3Fdonation%3D" + @donation.id.to_s
       puts "Donation URL: " + @url_to_donate
       redirect_to @url_to_donate
     else

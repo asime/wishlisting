@@ -35,7 +35,7 @@
         <div class="ppTextWarp">
         	<div class="ppMain">
         		<h1>Organization: <span><%= @charity.charity_name %></span></h1>
-            	<p>Since 1976, AHIP has assisted more than 3,500 low-income people with home repairs. For families who have nothing left at the end of the month, a broken water heater or a leaky roof can be a disaster.  That is where AHIP comes in.</p>
+            	<p><%= @charity.about %></p>
         	</div>
         	<div class="ppAbout">
         		<h1>Donate Now!</h1>
@@ -64,19 +64,19 @@
 					  </div>
 					  <div class="field">
 					    <%= f.label :fname, "your name" %><br />
-					    <%= f.text_field :fname, :size=>"20" %>&nbsp;<%= f.text_field :lname, :size=>"20" %>
+					    <%= f.text_field :fname, :size=>"15" %>&nbsp;<%= f.text_field :lname, :size=>"15" %>
 					  </div>
 					  
 					  <div class="field">
 					    <%= f.label :street1, "address" %><br />
-					    <%= f.text_field :street1, :size=>"20" %>&nbsp;<%= f.text_field :street2, :size=>"20" %>
+					    <%= f.text_field :street1, :size=>"15" %>&nbsp;<%= f.text_field :street2, :size=>"15" %>
 					  </div>
 					  <div class="field">
-					    <%= f.text_field :city, :size=>"20"%>, <%= f.text_field :state, :size=>"5" %>&nbsp;<%= f.text_field :postal, :size=>"5" %>
+					    <%= f.text_field :city, :size=>"15"%>, <%= f.text_field :state, :size=>"5" %>&nbsp;<%= f.text_field :postal, :size=>"5" %>
 					  </div>
 					  <div class="field">
 					    <%= f.label :email, "email address" %><br />
-					    <%= f.text_field :email %>&nbsp;&nbsp;<%= f.submit text="Donate !" %>
+					    <%= f.text_field :email, :size=>"20" %>&nbsp;&nbsp;<%= f.submit text="Donate !" %>
 					  </div>
 					<% end %>
 

@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Charity name</th>
+	<th>Short name</th>
     <th>Contact name</th>
     <th>Email</th>
     <th>Login</th>
@@ -16,6 +17,7 @@
 <% @charities.each do |charity| %>
   <tr>
     <td><%= charity.charity_name %></td>
+	<td><%= charity.short_name %></td>
     <td><%= charity.contact_name %></td>
     <td><%= charity.email %></td>
     <td><%= charity.login %></td>
