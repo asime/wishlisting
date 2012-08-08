@@ -18,9 +18,8 @@
 .container_3 .push_2 {left:66.667%;}
 .container_3 .pull_1 {left:-33.333%;}
 .container_3 .pull_2 {left:-66.667%;}
-ring-floats */
 /***************************************************************
-4 collumn
+4 column
 ***************************************************************/
 .grid_1,.grid_2,.grid_3,.grid_4 {display:inline;float: left;position: relative;margin-left: 1%;margin-right: 1%;}
 .alpha {margin-left: 0;}
