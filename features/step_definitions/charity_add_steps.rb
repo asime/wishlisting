@@ -29,6 +29,7 @@ end
 Given /^that Amanda has filled in all the fields$/ do
   fill_in "charity_charity_name", :with => 'Charity1 Name'
   fill_in "charity_short_name", :with => 'AHIP'
+  fill_in "charity_dts_url", :with => 'https://secure.donortownsquare.com/SSL/process.aspx?ai=1349&qs=TYBNV'
   fill_in 'charity_contact_name', :with => 'Charity1 Contact'
   fill_in 'charity_email', :with => 'Charity1@email.com'
   fill_in 'charity_login', :with => 'Charity1_Login'
