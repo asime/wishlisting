@@ -77,6 +77,8 @@
 					  <div class="field">
 					    <%= f.label :email, "email address" %><br />
 					    <%= f.text_field :email, :size=>"20" %>&nbsp;&nbsp;<%= f.submit text="Donate !" %>
+					
+						<%= f.hidden_field :charity_id, :value => @charity.id%>
 					  </div>
 					<% end %>
 

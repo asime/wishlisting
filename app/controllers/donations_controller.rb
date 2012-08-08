@@ -14,6 +14,12 @@ class DonationsController < ApplicationController
   # GET /donations/1.json
   def show
     @donation = Donation.find(params[:id])
+    
+    if !@donation.charity_id.nil?
+      @charity = Charity.find(@donation.charity_id)
+    else
+      @charity = Charity.new
+    end
 
     respond_to do |format|
       format.html # show.html.erb
