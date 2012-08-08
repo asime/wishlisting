@@ -1,0 +1,19 @@
+<!--PRODUCT PAGE WRAP-->
+<div class="ppWrap">
+	<%= image_tag "logoMain.png", :alt => "Wishlisting.org" %>
+
+	<!--PP INFO WRAP-->
+    <div class="ppInfo ppBoxWrap" style="padding: 25px;">
+        <h2>Harsh! A list for "<%= params[:short_name] %>" does not exist.</h2>
+		
+		<p>Since you're here already, why not go <%= link_to "create a wishlist", {:controller => "charities", :action => "new"} %> for your charity?</p>
+		
+		<%= image_tag "notfound.jpg"%>
+        
+    </div>
+    <!--//PP INFO WRAP-->
+  	
+    <div class="floatClear"></div>
+
+</div>
+<!--//PRODUCT PAGE WRAP-->

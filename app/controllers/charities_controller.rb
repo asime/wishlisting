@@ -26,11 +26,16 @@ class CharitiesController < ApplicationController
   # Show the wishlist for a particular charity
   def list
     @charity = Charity.find_by_short_name(params[:short_name])
-    @donation = Donation.new
+    
+    if @charity.nil?
+      redirect_to '/not_found/' + params[:short_name]
+    else
+      @donation = Donation.new
 
-    respond_to do |format|
-      format.html # list.html.erb
-      format.json { render json: @charity }
+      respond_to do |format|
+        format.html # list.html.erb
+        format.json { render json: @charity }
+      end
     end
   end
   
