@@ -69,5 +69,11 @@ Wishlisting::Application.configure do
   config.assets.precompile += %w( style.css )
   config.assets.precompile += %w( ie7.css )
   config.assets.precompile += %w( ie8-and-down.css )
+  config.assets.precompile += %w( jquery.js )
+  config.assets.precompile += %w( pieChart.js )
+  config.assets.precompile += %w( plugins.js )
+  config.assets.precompile += %w( script.js )
+  config.assets.precompile += %w( libs/jquery-1.7.1.min.js )
+  config.assets.precompile += %w( libs/modernizr-2.5.3.min.js )
   
 end
