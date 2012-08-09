@@ -6,7 +6,7 @@
 <script type="text/javascript">
     function TweetWindow() {
         var tweetText = document.getElementById('tweet_text');
-        window.open("http://twitter.com/intent/tweet?text=" + encodeURI(tweetText.value), "", "");
+        window.open("http://twitter.com/intent/tweet?text=" + encodeURI(tweetText.value).replace(/#/g,"%23"), "", "");
     }
 </script>
 <!--//Twitter share-->
@@ -49,7 +49,7 @@
         	</div>
         	<div class="ppAbout">
         		<h1>Tell your friends!</h1>
-				<p><%= text_area_tag 'tweet_text', 'I just donated to @AHIPVA to help repair a distressed home. #agile2012 #AgileDevLab wishlisting.org/list/AHIP', cols: 30, rows: 3 %></p>
+				<p><%= text_area_tag 'tweet_text', 'I just donated to @AHIPVA to help repair a distressed home. wishlisting.org/list/AHIP #agile2012 #AgileDevLab', cols: 30, rows: 3 %></p>
 				<p><a href="#" onclick="TweetWindow();"><%= image_tag "twitter_share.png"%></a></p>
 				
 				<hr>
