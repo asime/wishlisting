@@ -1,6 +1,42 @@
-<h1>Welcome to the future wishlisting.org</h1>
+<!--PRODUCT PAGE WRAP-->
+<div class="ppWrap">
+	<%= image_tag "logoMain.png", :alt => "Wishlisting.org" %>
+	
+	<!--PP TOP BAR-->
+    <div class="ppTopBar ppBoxWrap">
+		<h1>About Wishlisting.org</h1>
+    	<p>Wishlisting.org will allow your charity to list specific items that you or your clients need, and donors can contribute directly towards them. It is currently under development.</p>
+		<h2>The people behind Wishlisting.org</h2>
+		<p>Development of Wishlisting.org is being led by these companies and organizations, and is being developed for free as a learning exercise at Agile software development conferences around the U.S.</p>
+		<p>
+			<a href="http://www.AgilityFeat.com/"><%= image_tag "AgilityFeatLogo_150_87.jpg", :alt => "AgilityFeat.com, building software for startups!" %></a>
+			Agile Philanthropy
+			Lithespeed
+			Beyond Requirements
+			<a href="http://www.DonorTownSquare.com/"><%= image_tag "DTS_logo.gif", :alt => "DonorTownSquare.com, providing online donation processing for charities" %></a>
+			DareToBeLean
+		</p>
+		<p>Wishlisting.org is a "real" site taking donations for real charities, and is maintained by Donor Town Square and AgilityFeat. For inquiries, please contact Arin@AgilityFeat.com or +1.434.996.5226.</p>
+    </div>
+    <!--//PP TOP BAR-->
+	
+    <!--PP TOP BAR-->
+    <div class="ppTopBar ppBoxWrap">
+		<h1>Support our beta client!</h1>
+		<p>We are running a beta of Wishlisting.org with the Albemarle Housing Improvement Program, which is a great organization providing home repairs to distressed families so they can stay in their homes.  Want to help? <a href="http://wishlisting.org/list/AHIP">Make a Donation!</a>
+    	<a href="http://wishlisting.org/list/AHIP"><%= image_tag "AHIP_header_825.jpg", :alt => "Albemarle Housing Improvement Program" %></a>
+    </div>
+    <!--//PP TOP BAR-->
+  	
+	<!--PP TOP BAR-->
+    <div class="ppTopBar ppBoxWrap">
+		<h1>For our beta users only...</h1>
+		<p>The following links are for beta testing only, click on them at your own peril!  This part of the site is not ready for primetime yet!</p>
+		<%= link_to "Add Charity", {:controller => "charities", :action => "new"} %>
+	</div>
+    <!--//PP TOP BAR-->
 
-<h2>Add your charity here...</h2>
-<%= link_to "Add Charity", {:controller => "charities", :action => "new"} %>
+    <div class="floatClear"></div>
 
-Coming soon ... Make a Donation!
+</div>
+<!--//PRODUCT PAGE WRAP-->
