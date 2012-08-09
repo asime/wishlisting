@@ -43,7 +43,7 @@ class CharitiesController < ApplicationController
   # GET /charities/1.json
   # Show the wishlist for a particular charity
   def return
-    @charity = Charity.find(params[:short_name])
+    @charity = Charity.find_by_short_name(params[:short_name])
     if @charity.nil?
       redirect_to '/not_found/' + params[:short_name]
     else
@@ -58,7 +58,7 @@ class CharitiesController < ApplicationController
   # GET /charities/1.json
   # Show the wishlist for a particular charity
   def thanks
-    @charity = Charity.find(params[:short_name])
+    @charity = Charity.find_by_short_name(params[:short_name])
     
     if @charity.nil?
       redirect_to '/not_found/' + params[:short_name]

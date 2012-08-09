@@ -1,1 +1,136 @@
-Thanks <%= @donation.fname %> for your $<%= @donation.amount %> donation to <%= @charity.charity_name %>
+<!--PIECHART PLUGIN-->
+<script src="assets/js/pieChart.js"></script>
+<!--//PIECHART PLUGIN-->
+
+<!--Twitter share-->
+<script type="text/javascript">
+    function TweetWindow() {
+        var tweetText = document.getElementById('tweet_text');
+        window.open("http://twitter.com/intent/tweet?text=" + encodeURI(tweetText.value), "", "");
+    }
+</script>
+<!--//Twitter share-->
+
+<!--PRODUCT PAGE WRAP-->
+<div class="ppWrap">
+	<%= image_tag "logoMain.png", :alt => "Wishlisting.org" %>
+	
+    <!--PP TOP BAR-->
+    <div class="ppTopBar ppBoxWrap">
+    	<a href="http://www.ahipva.org/"><%= image_tag "AHIP_header_825.jpg", :alt => "Albemarle Housing Improvement Program" %></a>
+    </div>
+    <!--//PP TOP BAR-->
+
+	<!--PP INFO WRAP-->
+    <div class="ppInfo ppBoxWrap">
+        
+        <!--IMAGES-->
+        <div class="ppSlide">
+        	<div class="mainImg">
+            	<a href="#"><%= image_tag "ahip_images/ahip01.png"%></a>
+            </div>
+            <div class="ppThumbWrap">
+            	<a href="#"><%= image_tag "ahip_images/ahip01.png"%></a>
+            	<a href="#"><%= image_tag "ahip_images/ahip02.png"%></a>
+            	<a href="#"><%= image_tag "ahip_images/ahip03.png"%></a>
+            	<a href="#"><%= image_tag "ahip_images/ahip04.png"%></a>
+            	<a href="#"><%= image_tag "ahip_images/ahip05.png"%></a>
+            	<a href="#"><%= image_tag "ahip_images/ahip06.png"%></a>
+            </div>
+        </div>
+        <!--//IMAGES-->
+        
+        <!--INFO-->
+        <div class="ppTextWarp">
+        	<div class="ppMain">
+        		<h1>Thank you for supporting <span><%= @charity.charity_name %></span>!</h1>
+            	<p>Thanks <%= @donation.fname %> for your $<%= @donation.amount %> donation, it is greatly appreciated. <b>Please note that your card will be charged to Donor Town Square Inc. on behalf of <%= @charity.short_name %>.</b></p>
+				 
+        	</div>
+        	<div class="ppAbout">
+        		<h1>Tell your friends!</h1>
+				<p><%= text_area_tag 'tweet_text', 'I just donated to @AHIPVA to help repair a distressed home. #agile2012 wishlisting.org/list/AHIP', cols: 30, rows: 3 %></p>
+				<p><a href="#" onclick="TweetWindow();"><%= image_tag "twitter_share.png"%></a></p>
+				
+				<hr>
+				
+				<h1>Follow AHIP</h1>
+				
+				<p><a href="http://www.twitter.com/"><%= image_tag "twitter.png"%></a>&nbsp;&nbsp;<a href="http://www.facebook.com/"><%= image_tag "facebook.png"%></a></p>
+
+        	</div>
+        </div>
+        <!--/INFO-->
+    </div>
+    <!--//PP INFO WRAP-->
+    
+    <!--PP DONATION BOARD-->
+    <div class="donationBoard">
+    	
+        <div class="trackList ppBoxWrap">
+            <!--PIECHART-->
+            <div class="piechart">
+                <div class="pieHolder">
+                	<span>75.00%</span>
+                    <canvas id="piechart" width="60" height="60"></canvas>
+                </div>
+            </div>
+            <!--//PIECHART-->
+            
+            <div class="chartDiv"></div><!--CHART DIVIER-->
+            
+            <!--THERMOMETER CHART-->
+        	<div class="thermometerChart">
+            	<span>$1000</span><br/><br/>
+                <!--THERMOMETER WRAP-->
+                <div class="thermometerWrap">
+                    
+                    <!--THERMOMETER BG-->
+                    <div class="thermometerBg">
+                        <div class="progress"  style="width:75%"></div><!--USE STYLE TO CONTROL PROGRESS-->
+                    </div>
+                    <!--//THERMOMETER BG-->
+					<span class="right">Needs $250</span><!--NEEDS INFO-->
+                </div>
+                <!--//THERMOMETER WRAP-->
+            </div> 
+			<!--//THERMOMETER CHART-->
+        </div>
+        <!--//PIECHART-->
+        
+        <!--DONATION FORM-->
+        <div class="donationform ppBoxWrap">
+        	<p><%= image_tag "ahip_images/appeal-brochure.jpg"%></p>
+			            <p class="bodylink" style="padding-bottom:8px"><a href="http://www.ahipva.org/downloads/ahip-appeal.pdf" target="_blank" class="mainlink2">Download AHIP<br/>
+			            brochure (pdf) &gt;</a></p>            
+        </div>
+        <!--DONATION FORM-->
+
+    </div>
+    <!--//PP DONATION BOARD-->
+  	
+    <div class="floatClear"></div>
+
+</div>
+<!--//PRODUCT PAGE WRAP-->
+
+<!--PIE CHART-->
+<script type="text/javascript">
+	window.onload = createPieChart;
+	function createPieChart() {
+	var pieChart = new PieChart( "piechart",
+	{
+	includeLabels: true,
+	data: [60, 300],
+	labels: [],
+	colors: [
+				 ["#c47c79", "#c47c79"],
+				 ["#a63936", "#a63936"]
+	]
+	}
+	);
+	pieChart.draw();
+	}
+</script>
+<!--PIE CHART-->
+
