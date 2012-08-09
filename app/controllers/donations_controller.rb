@@ -57,7 +57,7 @@ class DonationsController < ApplicationController
     @charity = Charity.find(@donation.charity_id)
 
     if @donation.save
-      @ret_url = "http%3A%2F%2Flocalhost%3A3000%2Flist%2F" + URI.escape(@charity.short_name) + "%2Freturn%3Fdonation%3D" + @donation.id.to_s
+      @ret_url = "http%3A%2F%2Fwishlisting.org%2Flist%2F" + URI.escape(@charity.short_name) + "%2Freturn%3Fdonation%3D" + @donation.id.to_s
       @url_to_donate = @charity.dts_url + "&amt=" + URI.escape(@donation.amount.to_s) + "&fn=" + URI.escape(@donation.fname) + "&ln=" + URI.escape(@donation.lname) + "&s1=" + URI.escape(@donation.street1) + "&c=" + URI.escape(@donation.city) + "&s=" + URI.escape(@donation.state) + "&z=" + URI.escape(@donation.postal) + "&e=" + URI.escape(@donation.email) + "&ret=" + @ret_url
       puts "Donation URL: " + @url_to_donate
       redirect_to @url_to_donate
