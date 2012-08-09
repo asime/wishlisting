@@ -98,7 +98,7 @@
             <!--PIECHART-->
             <div class="piechart">
                 <div class="pieHolder">
-                	<span>75.00%</span>
+                	<span><%= @charity.percentAgainstTotal %>%</span>
                     <canvas id="piechart" width="60" height="60"></canvas>
                 </div>
             </div>
@@ -108,16 +108,16 @@
             
             <!--THERMOMETER CHART-->
         	<div class="thermometerChart">
-            	<span>$1000</span><br/><br/>
+            	<span>of $<%= @charity.total_goal %></span><br/><br/>
                 <!--THERMOMETER WRAP-->
                 <div class="thermometerWrap">
                     
                     <!--THERMOMETER BG-->
                     <div class="thermometerBg">
-                        <div class="progress"  style="width:75%"></div><!--USE STYLE TO CONTROL PROGRESS-->
+                        <div class="progress"  style="width:<%= @charity.percentAgainstTotal %>%"></div><!--USE STYLE TO CONTROL PROGRESS-->
                     </div>
                     <!--//THERMOMETER BG-->
-					<span class="right">Needs $250</span><!--NEEDS INFO-->
+					<span class="right">Needs $<%= @charity.remainingAgainstTotal %></span><!--NEEDS INFO-->
                 </div>
                 <!--//THERMOMETER WRAP-->
             </div> 
