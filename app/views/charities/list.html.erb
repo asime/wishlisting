@@ -98,7 +98,7 @@
             <!--PIECHART-->
             <div class="piechart">
                 <div class="pieHolder">
-                	<span><%= @charity.percentAgainstTotal %>%</span>
+                	<span><%= number_with_precision(@charity.percentAgainstTotal, :precision => 1) %>%</span>
                     <canvas id="piechart" width="60" height="60"></canvas>
                 </div>
             </div>
@@ -108,7 +108,7 @@
             
             <!--THERMOMETER CHART-->
         	<div class="thermometerChart">
-            	<span>of $<%= @charity.total_goal %></span><br/><br/>
+            	<span>of $<%= number_with_precision(@charity.total_goal, :precision => 2) %></span><br/><br/>
                 <!--THERMOMETER WRAP-->
                 <div class="thermometerWrap">
                     
@@ -117,7 +117,7 @@
                         <div class="progress"  style="width:<%= @charity.percentAgainstTotal %>%"></div><!--USE STYLE TO CONTROL PROGRESS-->
                     </div>
                     <!--//THERMOMETER BG-->
-					<span class="right">Needs $<%= @charity.remainingAgainstTotal %></span><!--NEEDS INFO-->
+					<span class="right"><b>Still needs $<%= number_with_precision(@charity.remainingAgainstTotal, :precision => 2) %></b></span><!--NEEDS INFO-->
                 </div>
                 <!--//THERMOMETER WRAP-->
             </div> 
@@ -148,7 +148,7 @@
 	var pieChart = new PieChart( "piechart",
 	{
 	includeLabels: true,
-	data: [60, 300],
+	data: [<%= @charity.degreesRemaining %>, <%= @charity.degreesProgress %>],
 	labels: [],
 	colors: [
 				 ["#c47c79", "#c47c79"],

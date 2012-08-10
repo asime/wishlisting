@@ -38,4 +38,20 @@ class Charity < ActiveRecord::Base
     end
   end
   
+  def degreesProgress
+    @goal = 0
+    if !total_goal.nil?
+      @goal = total_goal
+    end
+    if @goal > 0
+      return (progressAgainstTotal/@goal) * 360
+    else
+      return 0
+    end
+  end
+  
+  def degreesRemaining
+    360-degreesProgress
+  end
+  
 end
