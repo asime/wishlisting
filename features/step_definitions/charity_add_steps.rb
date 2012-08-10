@@ -51,3 +51,21 @@ Then /^A successful message is displayed with the charity information$/ do
   page.should have_content("About: Charity1 Desc")
   page.should have_content("Charity was successfully created.")
 end
+
+Given /^Amanda creates another charity with same short_name$/ do
+  step "that Amanda has filled in all the fields"
+end
+
+Then /^an error message is displayed that the short_name is already taken$/ do
+  page.should have_content("Short name has already been taken")
+end
+
+Given /^Amanda creates another charity with same short_name in upper case$/ do
+  step "that Amanda has filled in all the fields"
+  fill_in "charity_short_name", :with => find_field('charity_short_name').value.upcase
+end
+
+Given /^Amanda creates another charity with same short_name in lower case$/ do
+  step "that Amanda has filled in all the fields"
+  fill_in "charity_short_name", :with => find_field('charity_short_name').value.downcase
+end

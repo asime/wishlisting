@@ -1,6 +1,8 @@
 class Charity < ActiveRecord::Base
   attr_accessible :about, :charity_name, :contact_name, :email, :login, :password, :dts_url, :short_name, :total_goal
 
+  validates_uniqueness_of :short_name, :case_sensitive => false
+  
   def progressAgainstTotal
 	  @donations = Donation.find_all_by_charity_id(id)
 	  @progress = 0
