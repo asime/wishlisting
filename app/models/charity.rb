@@ -23,7 +23,11 @@ class Charity < ActiveRecord::Base
     if !total_goal.nil?
       @goal = total_goal
     end
-    return @goal - progressAgainstTotal
+    @remaining = @goal - progressAgainstTotal
+    if @remaining < 0
+      @remaining = 0
+    end
+    return @remaining
   end
   
   def percentAgainstTotal
@@ -32,7 +36,12 @@ class Charity < ActiveRecord::Base
       @goal = total_goal
     end
     if @goal > 0
-      return (progressAgainstTotal/@goal) * 100
+      @percent = (progressAgainstTotal/@goal) * 100
+      if @percent > 100
+        return 100
+      else
+        return @percent
+      end
     else
       return 0
     end
@@ -44,7 +53,12 @@ class Charity < ActiveRecord::Base
       @goal = total_goal
     end
     if @goal > 0
-      return (progressAgainstTotal/@goal) * 360
+      @degrees = (progressAgainstTotal/@goal) * 360
+      if @degrees > 360
+        return 360
+      else
+        return @degrees
+      end
     else
       return 0
     end
