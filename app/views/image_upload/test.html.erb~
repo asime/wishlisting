@@ -1,0 +1,3 @@
+<b>test</b>
+<br>
+cl_image_tag("sample.jpg", :alt => "Sample Image")

@@ -10,7 +10,8 @@ Wishlisting::Application.routes.draw do
   resources :images
   resources :wishlist_items
   resources :charities
-
+  
+  match 'image_upload/test' => 'image_upload#test'
   match 'list/:short_name/' => 'charities#list'
   match 'not_found/:short_name/' => 'charities#not_found'
   match 'list/:short_name/return' => 'charities#return'

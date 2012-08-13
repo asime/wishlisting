@@ -16,6 +16,7 @@ group :development, :test do
 end
 
 gem 'wepay-rails'
+gem 'carrierwave'
 gem 'cloudinary'
 
 # Gems used only for assets and not required
