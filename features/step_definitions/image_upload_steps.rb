@@ -15,7 +15,7 @@ When /^I do a direct upload to cloudinary$/ do
   Cloudinary::Uploader.upload(File.open(@localfile))
 end
 
-Then /^I should be able to view that image in the browser at "(.*?)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^I should be able to view that image in the browser at "(.*?)"$/ do |path|
+  visit(path + @localfile)
 end
 
