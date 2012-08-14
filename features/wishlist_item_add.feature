@@ -13,10 +13,15 @@ Scenario: Add a wishlist item to a specific charity
  Then Amanda sees Wishlist item was successfully created on the page
  And the Charity ID, Wishlist Item and Description she entered are shown on the page
 
-@wip
-Scenario: Add an image
+@imageupload @wip
+Scenario: Add an image to a wishlist item
  Given Amanda clicks on Add Wishlist Item
- When Amanda enters the Wishlist Item and Description  
- And Amanda selects a file
+ When Amanda enters the Wishlist Item and Description
  And Amanda clicks on Save
- Then the image is displayed in the wish list view
+ Given Amanda is on show Wishlist Item page
+ And Wishlist Item has no existing image
+ And Amanda chooses an image
+ When Amanda clicks update wishlist item
+ Then show Wishlist item
+ And page displays the new image
+ And page shows message "Image uploaded successfully"
