@@ -19,10 +19,6 @@
   <%= @image.image_type %>
 </p>
 
-<p>
-  <b>Wishlist Item Id:</b>
-  <%= @image.wishlist_item_id %>
-</p>
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
 <%= link_to 'Back', images_path %>

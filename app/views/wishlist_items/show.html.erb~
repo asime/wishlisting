@@ -33,7 +33,7 @@
 	  %>
 <% end %>
 <p><b>Add a "Before" image!</b></p>
-<%= form_tag({:action => :upload}, :multipart => true) do %>
+<%= form_tag({:action => :upload_before_image}, :multipart => true) do %>
 	<%= file_field_tag 'before_image' %>
 	<%= button_tag 'Upload image', :type => 'submit' %>
 <% end %>

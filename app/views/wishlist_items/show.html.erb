@@ -21,6 +21,10 @@
 <%= link_to 'Images', images_path %>
 
 <p>
+	<%= @before_images.inspect %>
+</p>
+
+<p>
 <% if @before_images.empty? %>
 	<p>Please upload one or more images for this item.</p>	
 <% else %>

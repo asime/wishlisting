@@ -1,4 +1,5 @@
-<%= cl_image_tag(@uploaded_file["url"].split("/").last, :width=> 150) %><br/>
+<%= cl_image_tag("jel2gj98bwgz2ozsfnh7g.png", :width=> 150) %><br/>
+<%= cl_image_tag(@uploaded_file["public_id"], :width => 150, :crop => :scale) %><br/>
 The image is <%= @new_image.original_filename %><br/>
 The new path is <%= @uploaded_file["url"] %><br/>
 <%= image_tag @uploaded_file["url"] %><br/>

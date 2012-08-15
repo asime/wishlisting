@@ -5,7 +5,6 @@
     <th>Image</th>
     <th>Description</th>
     <th>Image Type</th>
-    <th>Wishlist Item Id</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,7 +15,6 @@
     <td><%= cl_image_tag(image.image, :width => 100) %><br/><%= image.image %></td>
     <td><%= image.description %></td>
     <td><%= image.image_type %></td>
-    <td><%= image.wishlist_item_id %></td>
     <td><%= link_to 'Show', image %></td>
     <td><%= link_to 'Edit', edit_image_path(image) %></td>
     <td><%= link_to 'Destroy', image, confirm: 'Are you sure?', method: :delete %></td>
