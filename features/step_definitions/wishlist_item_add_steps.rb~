@@ -47,7 +47,7 @@ Given /^Amanda is on show Wishlist Item page$/ do
 end
 
 Given /^Wishlist Item has no existing image$/ do
-  page.should have_content("Please upload one or more images for this item.")
+  pending # express the regexp above with the code you wish you had
 end
 
 Given /^Amanda chooses an image$/ do

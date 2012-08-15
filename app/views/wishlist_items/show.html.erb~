@@ -21,15 +21,10 @@
 <%= link_to 'Images', images_path %>
 
 <p>
-<% if @before_images.empty? %>
-	Please upload one or more images for this item.	
-<% else %>
-	
-	  <b>Before Images</b>
-	  <%
-		@before_images.each do |before_image|
-		  puts "Description: #{before_image.description}</br>"
-		end
-	  %>
-<% end %>
+  <b>Before Images</b>
+  <%
+	@before_images.each do |before_image|
+	  puts "Description: #{before_image.description}</br>"
+	end
+  %>
 </p>

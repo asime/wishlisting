@@ -13,7 +13,7 @@ Scenario: Add a wishlist item to a specific charity
  Then Amanda sees Wishlist item was successfully created on the page
  And the Charity ID, Wishlist Item and Description she entered are shown on the page
 
-@imageupload
+@imageupload @wip
 Scenario: Add an image to a wishlist item
  Given Amanda clicks on Add Wishlist Item
  When Amanda enters the Wishlist Item and Description
