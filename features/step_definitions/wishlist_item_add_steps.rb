@@ -1,3 +1,5 @@
+$TEST_IMAGE_PATH = "/app/assets/images/"
+$TEST_IMAGE = "rails.png"
 
 Given /^Amanda creates a charity$/ do
   steps %Q{
@@ -34,14 +36,6 @@ Then /^the Charity ID, Wishlist Item and Description she entered are shown on th
    page.should have_content("Description: bogus desc")
 end
 
-When /^Amanda selects a file$/ do
-   attach_file('image', Rails.root + 'app/assets/images/rails.png')
-end
-
-Then /^the image is displayed in the wish list view$/ do
-  page.should have_content('src="assets/rails.png"')
-end
-
 Given /^Amanda is on show Wishlist Item page$/ do
   current_path.should include("wishlist_items/" + @@wishlist_item_id.to_s)
 end
@@ -51,19 +45,20 @@ Given /^Wishlist Item has no existing image$/ do
 end
 
 Given /^Amanda chooses an image$/ do
-  pending # express the regexp above with the code you wish you had
+  attach_file "before_image", Rails.root.to_s + $TEST_IMAGE_PATH + $TEST_IMAGE
+  find(:xpath, "//input[@id='before_image']").value.should == Rails.root.to_s + $TEST_IMAGE_PATH + $TEST_IMAGE
 end
 
-When /^Amanda clicks update wishlist item$/ do
-  pending # express the regexp above with the code you wish you had
+When /^Amanda clicks upload image$/ do
+  click_button('Upload image')
 end
 
 Then /^show Wishlist item$/ do
-  pending # express the regexp above with the code you wish you had
+  current_path.split("/").last.should == @@wishlist_item_id.to_s
 end
 
 Then /^page displays the new image$/ do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content $TEST_IMAGE
 end
 
 Then /^page shows message "(.*?)"$/ do |arg1|

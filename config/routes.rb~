@@ -16,7 +16,6 @@ Wishlisting::Application.routes.draw do
   match 'not_found/:short_name/' => 'charities#not_found'
   match 'list/:short_name/return' => 'charities#return'
   match 'list/:short_name/thanks' => 'charities#thanks'
-  match 'wishlist_items/:id/upload_before_image' => 'wishlist_items#upload_before_image'
 
   #map.connect "home/:action", :controller => 'home', :action => /[a-z]+/i
   

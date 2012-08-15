@@ -21,10 +21,20 @@
 <%= link_to 'Images', images_path %>
 
 <p>
-  <b>Before Images</b>
-  <%
-	@before_images.each do |before_image|
-	  puts "Description: #{before_image.description}</br>"
-	end
-  %>
+<% if @before_images.empty? %>
+	<p>Please upload one or more images for this item.</p>	
+<% else %>
+	
+	  <b>Before Images</b>
+	  <%
+		@before_images.each do |before_image|
+		  puts "Description: #{before_image.description}</br>"
+		end
+	  %>
+<% end %>
+<p><b>Add a "Before" image!</b></p>
+<%= form_tag({:action => :upload}, :multipart => true) do %>
+	<%= file_field_tag 'before_image' %>
+	<%= button_tag 'Upload image', :type => 'submit' %>
+<% end %>
 </p>

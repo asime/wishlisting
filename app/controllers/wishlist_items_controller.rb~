@@ -85,8 +85,6 @@ class WishlistItemsController < ApplicationController
 
   # POST For handling the upload of before images to go with the wishlist item
   def upload_before_image
-	@wishlist_item = WishlistItem.find(params[:id])
 
-	redirect_to @wishlist_item
   end
 end
