@@ -24,4 +24,5 @@ Scenario: Add an image to a wishlist item
  When Amanda clicks upload image
  Then show Wishlist item
  And page displays the new image
+ And says hello world
  And page shows message "Image uploaded successfully"

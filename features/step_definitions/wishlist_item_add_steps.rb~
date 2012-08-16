@@ -36,14 +36,6 @@ Then /^the Charity ID, Wishlist Item and Description she entered are shown on th
    page.should have_content("Description: bogus desc")
 end
 
-When /^Amanda selects a file$/ do
-   attach_file('image', Rails.root + 'app/assets/images/rails.png')
-end
-
-Then /^the image is displayed in the wish list view$/ do
-  page.should have_content('src="assets/rails.png"')
-end
-
 Given /^Amanda is on show Wishlist Item page$/ do
   current_path.should include("wishlist_items/" + @@wishlist_item_id.to_s)
 end
@@ -66,7 +58,9 @@ Then /^show Wishlist item$/ do
 end
 
 Then /^page displays the new image$/ do
-  page.should have_content $TEST_IMAGE
+  cloud_image_name = Image.find(@@wishlist_item_id).image
+  element = find(:xpath, "//img[@src='http://res.cloudinary.com/wishlisting-org/image/upload/#{cloud_image_name}']")
+  puts "Element found: #{element.inspect}"
 end
 
 Then /^page shows message "(.*?)"$/ do |arg1|

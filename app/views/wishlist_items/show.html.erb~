@@ -24,14 +24,18 @@
 <% if @before_images.empty? %>
 	<p>Please upload one or more images for this item.</p>	
 <% else %>
-	
 	  <b>Before Images</b>
-	  <%
-		@before_images.each do |before_image|
-		  puts "Description: #{before_image.description}</br>"
-		end
-	  %>
+	<!--IMAGES-->
+        <div class="ppSlide">
+            <div class="ppThumbWrap">
+		<% @before_images.each do |before_image| %>
+            		<a href="#"><%= cl_image_tag(before_image.image, :alt => before_image.image) %></a><%= before_image.image %>
+		<% end %>
+            </div>
+        </div>
+        <!--//IMAGES-->
 <% end %>
+<br clear="left" />
 <p><b>Add a "Before" image!</b></p>
 <%= form_tag({:action => :upload_before_image}, :multipart => true) do %>
 	<%= file_field_tag 'before_image' %>

@@ -58,7 +58,8 @@ Then /^show Wishlist item$/ do
 end
 
 Then /^page displays the new image$/ do
-  page.should have_content $TEST_IMAGE
+  cloud_image_name = Image.find(@@wishlist_item_id).image
+  find(:xpath, "//img[@src='http://res.cloudinary.com/wishlisting-org/image/upload/#{cloud_image_name}']")
 end
 
 Then /^page shows message "(.*?)"$/ do |arg1|
