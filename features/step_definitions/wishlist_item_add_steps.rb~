@@ -1,5 +1,6 @@
 $TEST_IMAGE_PATH = "/app/assets/images/"
 $TEST_IMAGE = "rails.png"
+$TEST_IMAGE2 = "DTS_logo.gif"
 
 Given /^Amanda creates a charity$/ do
   steps %Q{
@@ -62,7 +63,36 @@ Then /^page displays the new image$/ do
   find(:xpath, "//img[@src='http://res.cloudinary.com/wishlisting-org/image/upload/#{cloud_image_name}']")
 end
 
-Then /^page shows message "(.*?)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^page shows message "(.*?)"$/ do |message|
+  page.should have_content message
+end
+
+Given /^Amanda is on show wishlist item and wishlist item has one existing image$/ do
+  steps %Q{
+	Given Amanda clicks on Add Wishlist Item
+	When Amanda enters the Wishlist Item and Description
+	Then Amanda clicks on Save
+	Given Amanda is on show Wishlist Item page
+	And Wishlist Item has no existing image
+	And Amanda chooses an image
+	When Amanda clicks upload image
+	Then show Wishlist item
+	And page displays the new image
+	And page shows message "Image uploaded successfully"
+    } 
+end
+
+Given /^Amanda has chosen a new image to add$/ do
+  attach_file "before_image", Rails.root.to_s + $TEST_IMAGE_PATH + $TEST_IMAGE2
+  find(:xpath, "//input[@id='before_image']").value.should == Rails.root.to_s + $TEST_IMAGE_PATH + $TEST_IMAGE2
+end
+
+Then /^show wishlist item displays the new and existing images$/ do
+  before_images = Image.find(:all, @@wishlist_item_id)
+  before_images.length.should == 3
+  before_images.each do | before_image |
+	cloud_image_name = before_image.image
+	find(:xpath, "//img[@src='http://res.cloudinary.com/wishlisting-org/image/upload/#{cloud_image_name}']")
+  end
 end
 

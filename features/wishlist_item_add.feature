@@ -14,7 +14,7 @@ Scenario: Add a wishlist item to a specific charity
  And the Charity ID, Wishlist Item and Description she entered are shown on the page
 
 @imageupload
-Scenario: Add an image to a wishlist item
+Scenario: Add an image to a wishlist item with no images yet
  Given Amanda clicks on Add Wishlist Item
  When Amanda enters the Wishlist Item and Description
  Then Amanda clicks on Save
@@ -25,3 +25,10 @@ Scenario: Add an image to a wishlist item
  Then show Wishlist item
  And page displays the new image
  And page shows message "Image uploaded successfully"
+
+@imageupload
+Scenario: Add an image to a wishlist item with an existing image already
+ Given Amanda is on show wishlist item and wishlist item has one existing image
+ And Amanda has chosen a new image to add
+ When Amanda clicks upload image
+ Then show wishlist item displays the new and existing images
