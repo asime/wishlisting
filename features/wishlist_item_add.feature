@@ -32,3 +32,10 @@ Scenario: Add an image to a wishlist item with an existing image already
  And Amanda has chosen a new image to add
  When Amanda clicks upload image
  Then show wishlist item displays the new and existing images
+
+@imageupload
+Scenario: Not an image file
+ Given Amanda is on show wishlist item and wishlist item has one existing image
+ And Amanda has chosen a non image to add
+ When Amanda clicks upload image
+ Then page shows message "File must be JPG, GIF, or PNG"

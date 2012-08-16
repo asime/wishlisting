@@ -29,7 +29,7 @@
         <div class="ppSlide">
             <div class="ppThumbWrap">
 		<% @before_images.each do |before_image| %>
-            		<a href="#"><%= cl_image_tag(before_image.image, :alt => before_image.image) %></a><%= before_image.image %>
+            		<a href="#"><%= cl_image_tag(before_image.image, :alt => before_image.image) %></a>
 		<% end %>
             </div>
         </div>
@@ -38,7 +38,7 @@
 <br clear="left" />
 <p><b>Add a "Before" image!</b></p>
 <%= form_tag({:action => :upload_before_image}, :multipart => true) do %>
-	<%= file_field_tag 'before_image' %>
+	<%= file_field_tag 'before_image', :accept => 'image/png,image/gif,image/jpeg' %>
 	<%= button_tag 'Upload image', :type => 'submit' %>
 <% end %>
 </p>

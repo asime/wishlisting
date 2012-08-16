@@ -24,7 +24,6 @@ end
 When /^Amanda clicks on Save$/ do
   click_button('Create Wishlist item')
   @@wishlist_item_id = current_path.split("/").last
-  puts "Created wishlist item id " + @@wishlist_item_id
 end
 
 Then /^Amanda sees Wishlist item was successfully created on the page$/ do 
@@ -59,7 +58,7 @@ Then /^show Wishlist item$/ do
 end
 
 Then /^page displays the new image$/ do
-  cloud_image_name = Image.find(@@wishlist_item_id).image
+  cloud_image_name = Image.find(:first, :conditions => {:wishlist_item_id => @@wishlist_item_id}).image
   find(:xpath, "//img[@src='http://res.cloudinary.com/wishlisting-org/image/upload/#{cloud_image_name}']")
 end
 
@@ -96,3 +95,6 @@ Then /^show wishlist item displays the new and existing images$/ do
   end
 end
 
+Given /^Amanda has chosen a non image to add$/ do
+  attach_file "before_image", Rails.root.to_s + "/app/assets/javascripts/application.js"
+end

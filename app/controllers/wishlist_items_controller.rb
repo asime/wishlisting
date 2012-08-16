@@ -16,7 +16,6 @@ class WishlistItemsController < ApplicationController
     @wishlist_item = WishlistItem.find(params[:id])
     
     @before_images = Image.find(:all, :conditions => { :wishlist_item_id => params[:id], :image_type => false })
-	#@before_images = Image.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -89,15 +88,20 @@ class WishlistItemsController < ApplicationController
 	@wishlist_item = WishlistItem.find(params[:id])
 
 	@new_image = params[:before_image]
-	@uploaded_file = Cloudinary::Uploader.upload(@new_image)
+	
+	if @new_image.original_filename =~ /.jpg|.gif|.png|.jpeg/i
+		@uploaded_file = Cloudinary::Uploader.upload(@new_image)
 
-	@new_before_image = Image.new
-	@new_before_image.wishlist_item_id = @wishlist_item.id
-	@new_before_image.image = @uploaded_file["url"].split("/").last
-	@new_before_image.image_type = 0 #Before image
-	@new_before_image.description = @uploaded_file["url"]
-	@new_before_image.save
+		@new_before_image = Image.new
+		@new_before_image.wishlist_item_id = @wishlist_item.id
+		@new_before_image.image = @uploaded_file["url"].split("/").last
+		@new_before_image.image_type = 0 #Before image
+		@new_before_image.description = @uploaded_file["url"]
+		@new_before_image.save
 
-	redirect_to @wishlist_item, :notice => "Image uploaded successfully"
+		redirect_to @wishlist_item, :notice => "Image uploaded successfully"
+	else
+		redirect_to @wishlist_item, :notice => "File must be JPG, GIF, or PNG"
+	end
   end
 end
