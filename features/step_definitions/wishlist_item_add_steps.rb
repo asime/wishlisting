@@ -62,7 +62,7 @@ Then /^page displays the new image$/ do
   find(:xpath, "//img[@src='http://res.cloudinary.com/wishlisting-org/image/upload/#{cloud_image_name}']")
 end
 
-Then /^page shows message "(.*?)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^page shows message "(.*?)"$/ do |message|
+  page.should have_content message
 end
 

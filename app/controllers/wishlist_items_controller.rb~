@@ -15,8 +15,8 @@ class WishlistItemsController < ApplicationController
   def show
     @wishlist_item = WishlistItem.find(params[:id])
     
-    #@before_images = Image.find(:all, :conditions => { :wishlist_item_id => :id, :image_type => false })
-	@before_images = Image.all
+    @before_images = Image.find(:all, :conditions => { :wishlist_item_id => params[:id], :image_type => false })
+	#@before_images = Image.all
 
     respond_to do |format|
       format.html # show.html.erb

@@ -98,6 +98,6 @@ class WishlistItemsController < ApplicationController
 	@new_before_image.description = @uploaded_file["url"]
 	@new_before_image.save
 
-	redirect_to @wishlist_item
+	redirect_to @wishlist_item, :notice => "Image uploaded successfully"
   end
 end

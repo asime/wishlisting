@@ -59,8 +59,7 @@ end
 
 Then /^page displays the new image$/ do
   cloud_image_name = Image.find(@@wishlist_item_id).image
-  element = find(:xpath, "//img[@src='http://res.cloudinary.com/wishlisting-org/image/upload/#{cloud_image_name}']")
-  puts "Element found: #{element.inspect}"
+  find(:xpath, "//img[@src='http://res.cloudinary.com/wishlisting-org/image/upload/#{cloud_image_name}']")
 end
 
 Then /^page shows message "(.*?)"$/ do |arg1|
