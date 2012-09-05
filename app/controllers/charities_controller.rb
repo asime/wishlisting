@@ -31,7 +31,7 @@ class CharitiesController < ApplicationController
       redirect_to '/not_found/' + params[:short_name]
     else
       @donation = Donation.new
-
+      @wishlist_items = WishlistItem.find(:all, :conditions => ["charity_id = ?", @charity.id])
       respond_to do |format|
         format.html # list.html.erb
         format.json { render json: @charity }

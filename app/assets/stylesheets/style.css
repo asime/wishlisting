@@ -224,6 +224,12 @@ input:hover[type='submit']{
 /***************************************************************
 SEARCH STYLE
 ***************************************************************/
+form.charityTitle{
+	margin-top:10px;
+	margin-left: 1%;
+	margin-right: 1%;
+	width:100%;
+}
 form.mainSearch{
 	margin-top:10px;
 	margin-left: 1%;
