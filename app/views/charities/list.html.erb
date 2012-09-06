@@ -54,12 +54,12 @@
 
 	                <!--TERMOMETER BG-->
 	            	<div class="thermometerBg">
-	                	<div class="progress"  style="width:35%"></div><!--USE STYLE TO CONTRO PROGRESS-->
+	                	<div class="progress"  style="width:<%= wishlist_item.percentAgainstGoal %>%"></div><!--USE STYLE TO CONTRO PROGRESS-->
 	                </div>
 	                <!--//TERMOMETER BG-->
 
-	                <span class="left">Raised $100</span><!--RAISED INFO-->
-	                <span class="right">Needs $300</span><!--NEEDS INFO-->
+	                <span class="left">Raised $<%= number_with_precision(wishlist_item.progressAgainstGoal, :precision => 2) %></span><!--RAISED INFO-->
+	                <span class="right">Goal $<%= number_with_precision(wishlist_item.goal, :precision => 2) %></span><!--NEEDS INFO-->
 	            </div>
 	            <!--//TERMOMETER WRAP-->
 

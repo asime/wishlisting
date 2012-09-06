@@ -1,0 +1,163 @@
+<!--PIECHART PLUGIN-->
+<script src="assets/js/pieChart.js"></script>
+<!--//PIECHART PLUGIN-->
+
+<!--PRODUCT PAGE WRAP-->
+<div class="ppWrap">
+	<%= image_tag "logoMain.png", :alt => "Wishlisting.org" %>
+	
+    <!--PP TOP BAR-->
+    <div class="ppTopBar ppBoxWrap">
+    	<a href="http://www.ahipva.org/"><%= image_tag "AHIP_header_825.jpg", :alt => "Albemarle Housing Improvement Program" %></a>
+    </div>
+    <!--//PP TOP BAR-->
+
+	<!--PP INFO WRAP-->
+    <div class="ppInfo ppBoxWrap">
+        
+        <!--IMAGES-->
+        <div class="ppSlide">
+        	<div class="mainImg">
+            	<a href="#"><%= image_tag "ahip_images/ahip01.png"%></a>
+            </div>
+            <div class="ppThumbWrap">
+            	<a href="#"><%= image_tag "ahip_images/ahip01.png"%></a>
+            	<a href="#"><%= image_tag "ahip_images/ahip02.png"%></a>
+            	<a href="#"><%= image_tag "ahip_images/ahip03.png"%></a>
+            	<a href="#"><%= image_tag "ahip_images/ahip04.png"%></a>
+            	<a href="#"><%= image_tag "ahip_images/ahip05.png"%></a>
+            	<a href="#"><%= image_tag "ahip_images/ahip06.png"%></a>
+            </div>
+        </div>
+        <!--//IMAGES-->
+        
+        <!--INFO-->
+        <div class="ppTextWarp">
+        	<div class="ppMain">
+        		<h1>Organization: <span><%= @charity.charity_name %></span></h1>
+            	<p><%= @charity.about %></p>
+        	</div>
+        	<div class="ppAbout">
+        		<h1>Donate Now!</h1>
+            	
+				<p id="notice"><%= notice %></p>
+
+				<input id="charity_id" type="hidden" value="<%= @charity.id %>" /> 
+
+				<p>
+
+					<%= form_for(@donation) do |f| %>
+					  <% if @donation.errors.any? %>
+					    <div id="error_explanation">
+					      <h2><%= pluralize(@donation.errors.count, "error") %> prohibited this donation from being saved:</h2>
+
+					      <ul>
+					      <% @donation.errors.full_messages.each do |msg| %>
+					        <li><%= msg %></li>
+					      <% end %>
+					      </ul>
+					    </div>
+					  <% end %>
+					
+					  <div class="field">
+					    <%= f.text_field :amount, :size=>"15", :class=>"amountField" %>
+					  </div>
+					  <div class="field">
+					    <%= f.label :fname, "your name" %><br />
+					    <%= f.text_field :fname, :size=>"15" %>&nbsp;<%= f.text_field :lname, :size=>"15" %>
+					  </div>
+					  
+					  <div class="field">
+					    <%= f.label :street1, "address" %><br />
+					    <%= f.text_field :street1, :size=>"15" %>&nbsp;<%= f.text_field :street2, :size=>"15" %>
+					  </div>
+					  <div class="field">
+					    <%= f.text_field :city, :size=>"15"%>, <%= f.text_field :state, :size=>"5" %>&nbsp;<%= f.text_field :postal, :size=>"5" %>
+					  </div>
+					  <div class="field">
+					    <%= f.label :email, "email address" %><br />
+					    <%= f.text_field :email, :size=>"20" %>&nbsp;&nbsp;<%= f.submit text="Donate !" %>
+					
+						<%= f.hidden_field :charity_id, :value => @charity.id%>
+					  </div>
+					<% end %>
+
+				</p>
+
+
+        	</div>
+        </div>
+        <!--/INFO-->
+    </div>
+    <!--//PP INFO WRAP-->
+    
+    <!--PP DONATION BOARD-->
+    <div class="donationBoard">
+    	
+        <div class="trackList ppBoxWrap">
+            <!--PIECHART-->
+            <div class="piechart">
+                <div class="pieHolder">
+                	<span><%= number_with_precision(@charity.percentAgainstTotal, :precision => 1) %>%</span>
+                    <canvas id="piechart" width="60" height="60"></canvas>
+                </div>
+            </div>
+            <!--//PIECHART-->
+            
+            <div class="chartDiv"></div><!--CHART DIVIER-->
+            
+            <!--THERMOMETER CHART-->
+        	<div class="thermometerChart">
+            	<span>of $<%= number_with_precision(@charity.total_goal, :precision => 2) %></span><br/><br/>
+                <!--THERMOMETER WRAP-->
+                <div class="thermometerWrap">
+                    
+                    <!--THERMOMETER BG-->
+                    <div class="thermometerBg">
+                        <div class="progress"  style="width:<%= @charity.percentAgainstTotal %>%"></div><!--USE STYLE TO CONTROL PROGRESS-->
+                    </div>
+                    <!--//THERMOMETER BG-->
+					<span class="right"><b>Still needs $<%= number_with_precision(@charity.remainingAgainstTotal, :precision => 2) %></b></span><!--NEEDS INFO-->
+                </div>
+                <!--//THERMOMETER WRAP-->
+            </div> 
+			<!--//THERMOMETER CHART-->
+        </div>
+        <!--//PIECHART-->
+        
+        <!--DONATION FORM-->
+        <div class="donationform ppBoxWrap">
+        	<p><%= image_tag "ahip_images/appeal-brochure.jpg"%></p>
+			            <p class="bodylink" style="padding-bottom:8px"><a href="http://www.ahipva.org/downloads/ahip-appeal.pdf" target="_blank" class="mainlink2">Download AHIP<br/>
+			            brochure (pdf) &gt;</a></p>            
+        </div>
+        <!--DONATION FORM-->
+
+    </div>
+    <!--//PP DONATION BOARD-->
+  	
+    <div class="floatClear"></div>
+
+</div>
+<!--//PRODUCT PAGE WRAP-->
+
+<!--PIE CHART-->
+<script type="text/javascript">
+	window.onload = createPieChart;
+	function createPieChart() {
+	var pieChart = new PieChart( "piechart",
+	{
+	includeLabels: true,
+	data: [<%= @charity.degreesRemaining %>, <%= @charity.degreesProgress %>],
+	labels: [],
+	colors: [
+				 ["#c47c79", "#c47c79"],
+				 ["#a63936", "#a63936"]
+	]
+	}
+	);
+	pieChart.draw();
+	}
+</script>
+<!--PIE CHART-->
+
