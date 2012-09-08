@@ -16,10 +16,10 @@ Scenario: 1 - Single Wishlist Item that has not met its goal
  When Dave visits the charity home page
  Then the before image, charity, wishlist name, wishlist item description, total donation and goal is displayed at the top of the page.
 
-@wip
+@wishlistitem
 Scenario: 2 - 4 Wishlist items that have not their goal
  Given there are 4 wishlist items that have not met their goal
- When Dave visits the home page
+ When Dave visits the charity home page
  Then the before image, charity, wishlist name, wishlist item description, total donation, and goal for each of the 4 wishlist items is displayed at the top of the page.
 
 @wip
