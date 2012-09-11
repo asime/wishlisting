@@ -1,0 +1,200 @@
+<!--PIECHART PLUGIN-->
+<script src="assets/js/pieChart.js"></script>
+<!--//PIECHART PLUGIN-->
+
+<!--PRODUCT PAGE WRAP-->
+<div class="ppWrap">
+	
+    <!--PP TOP BAR-->
+    <div class="ppTopBar ppBoxWrap">
+    	<a href="/" class="breadcrumb">Wishlisting.org</a>
+		<a href="/list/<%= @charity.short_name %>" class="breadcrumb"><%= @charity.charity_name %></a>
+        <a href="/list/<%= @charity.short_name %>/<%= @wishlist_item.id %>" class="breadcrumb"><span class="breadcrumb"><%= @wishlist_item.item %></span></a>
+    </div>
+    <!--//PP TOP BAR-->
+
+	<!--PP INFO WRAP-->
+    <div class="ppInfo ppBoxWrap">
+        
+        <!--IMAGES-->
+        <div class="ppSlide">
+        	<div class="mainImg">
+				<% if @before_images.empty? %>
+					<a href="/list/<%= @charity.short_name %>/<%= @wishlist_item.id %>"><%= image_tag("NoImageAvailable.png") %></a>
+				<% else %>
+					<% main_image = @before_images[0] %>
+            		<a href="/list/<%= @charity.short_name %>/<%= @wishlist_item.id %>"><%= cl_image_tag(main_image.image, :alt => main_image.image) %></a>
+				<% end %>
+            </div>
+            <div class="ppThumbWrap">
+				<% if !@before_images.empty? %>
+					<% if @before_images.size > 1 %>
+						<% @before_images.each do |before_image| %>
+							<a href="/list/<%= @charity.short_name %>/<%= @wishlist_item.id %>"><%= cl_image_tag(before_image.image, :alt => before_image.image) %></a>
+						<% end %>
+					<% end %>
+				<% end %>
+            </div>
+        </div>
+        <!--//IMAGES-->
+        
+        <!--INFO-->
+        <div class="ppTextWarp">
+        	<div class="ppMain">
+        		<h1><%= @charity.short_name %>: <span><%= @wishlist_item.item %></span></h1>
+            	<p><%= @wishlist_item.description %></p>
+        	</div>
+            <div class="floatClear"></div>
+        	<div class="ppAbout">
+        		<h2>About <%= @charity.short_name %></h2>
+            	<p><%= @charity.about %></p>
+        	</div>
+        </div>
+        <!--/INFO-->
+    </div>
+    <!--//PP INFO WRAP-->
+    
+    <!--PP DONATION BOARD-->
+    <div class="donationBoard">
+    	
+        <div class="trackList ppBoxWrap">
+            <!--PIECHART-->
+            <div class="piechart">
+                <div class="pieHolder">
+                	<span><%= number_with_precision(@wishlist_item.percentAgainstGoal, :precision => 1) %>%</span>
+                    <canvas id="piechart" width="60" height="60"></canvas>
+                </div>
+            </div>
+            <!--//PIECHART-->
+            
+            <div class="chartDiv"></div><!--CHART DIVIER-->
+            
+            <!--THERMOMETER CHART-->
+        	<div class="thermometerChart">
+            	<span>of $<%= number_with_precision(@wishlist_item.goal, :precision => 2) %></span><br/><br/>
+                <!--THERMOMETER WRAP-->
+                <div class="thermometerWrap">
+                    
+                    <!--TERMOMETER BG-->
+                    <div class="thermometerBg">
+                        <div class="progress"  style="width:<%= @wishlist_item.percentAgainstGoal %>%"></div><!--USE STYLE TO CONTRO PROGRESS-->
+                    </div>
+                    <!--//TERMOMETER BG-->
+					<span class="right"><strong>Still needs $<%= number_with_precision(@wishlist_item.remainingAgainstGoal, :precision => 2) %></strong></span><!--NEEDS INFO-->
+                </div>
+                <!--//TERMOMETER WRAP-->
+            </div> 
+			<!--//TERMOMETER CHART-->
+        </div>
+        <!--//PIECHART-->
+        
+        <!--DONATION FORM-->
+        <div class="donationform ppBoxWrap">
+        	<h1>Donate</h1>
+        	<form>
+            	<input name="donationamount" type="text" value="">
+            	<input name="preDonation" class="textButton" type="button" value="Donate remaining $<%= number_with_precision(@wishlist_item.remainingAgainstGoal, :precision => 2) %>">
+            	<input name="submitQuery" type="submit" value="">
+            </form>            
+        </div>
+        <!--DONATION FORM-->
+
+    </div>
+    <!--//PP DONATION BOARD-->
+  	
+    <div class="floatClear"></div>
+    
+    <!--PP SIMILAR WL ITEMS-->
+    <div class="ppFooter ppBoxWrap">
+ 
+    <h3>Other Wishlisting items from <%= @charity.short_name %></h3>
+    <div class="floatClear"></div>
+        
+		<% @other_items.each do |wishlist_item| %>
+		
+			<%
+				other_items_before_images = Image.find(:all, :conditions => { :wishlist_item_id => wishlist_item.id, :image_type => false })
+				
+			%>
+		
+        <div class="thumbWrap">
+	
+			<% if other_items_before_images.empty? %>
+				<a href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>" rel="browser" class="browseThumb"><%= image_tag("NoImageAvailable.png") %></a>
+			<% else %>
+				<% thumb_image = other_items_before_images[0] %>
+        		<a href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>" rel="browser" class="browseThumb"><%= cl_image_tag(thumb_image.image, :alt => thumb_image.image) %></a>
+			<% end %>
+            <div class="tooltipThumbs">
+                <a href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>"><h1><%= @charity.short_name %>: <span><%= wishlist_item.item %></span></h1></a><!--INFO HEADER-->
+                <p>
+					<% if wishlist_item.description.length > 75 %>
+						<%= wishlist_item.description[0,75] %>...
+					<% else %>
+						<%= wishlist_item.description %>
+					<% end %>
+				</p>
+                <!--TERMOMETER WRAP-->
+                <div class="thermometerWrap">
+                    <!--TERMOMETER BG-->
+                    <div class="thermometerBg">
+                        <div class="progress"  style="width:<%= wishlist_item.percentAgainstGoal %>%"></div><!--USE STYLE TO CONTRO PROGRESS-->
+                    </div>
+                    <!--//TERMOMETER BG-->
+                    <span class="left">Raised $<%= number_with_precision(wishlist_item.progressAgainstGoal, :precision => 2) %> of $<%= number_with_precision(wishlist_item.remainingAgainstGoal, :precision => 2) %></span><!--NEEDS INFO-->
+                </div>
+            </div>
+        </div>
+        
+        <% end %>
+
+    <div class="floatClear"></div>
+    </div>
+    <!--PP SIMILAR WL ITEMS-->
+
+</div>
+<!--//PRODUCT PAGE WRAP-->
+
+<!--ANALYTICS-->
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', '######']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+<!--FOOTER TOOL TIP-->
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".thumbWrap a").hover(function() {
+			$(this).next(".tooltipThumbs").animate({opacity: "show", top: "-175"}, "normal");
+			}, function() {
+				$(this).next(".tooltipThumbs").animate({opacity: "hide", top: "-200"}, "fast");
+			
+		});
+	});
+</script>
+<!--FOOTER TOOL TIP-->
+<!--PIE CHART-->
+<script type="text/javascript">
+	window.onload = createPieChart;
+	function createPieChart() {
+	var pieChart = new PieChart( "piechart",
+	{
+	includeLabels: true,
+	data: [<%= @wishlist_item.degreesRemaining %>, <%= @wishlist_item.degreesProgress %>],
+	labels: [],
+	colors: [
+				 ["#c47c79", "#c47c79"],
+				 ["#a63936", "#a63936"]
+	]
+	}
+	);
+	pieChart.draw();
+	}
+</script>
+<!--PIE CHART-->

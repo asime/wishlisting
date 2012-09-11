@@ -16,7 +16,7 @@
 
 		<!--MAIN SEARCH-->
         <form class="charityTitle" role="search">
-            <strong><%= @charity.charity_name %></strong> - <%= @charity.about %>
+            <h2><%= @charity.charity_name %></h2>
         </form>
         <!--//MAIN SEARCH-->
         
@@ -40,13 +40,19 @@
 
 	            <!--THUMB WRAP-->
 	        	<div class="imgWrap">
-	            	<a href="#"><img alt="Img" src="assets/testImg/05.jpg"/></a>
+					<% before_images = Image.find(:all, :conditions => { :wishlist_item_id => wishlist_item.id, :image_type => false })%>
+					<% if before_images.empty? %>
+						<a href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>"><%= image_tag("NoImageAvailable.png") %></a>
+					<% else %>
+						<% before_image = before_images[0] %>
+	            		<a href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>"><%= cl_image_tag(before_image.image, :alt => before_image.image) %></a>
+					<% end %>
 	            </div>
 	            <!--//HUMB WRAP-->
 
 	            <div class="imgFooter"></div><!--THUMB SHADOW-->
 
-	            <a href="#"><h1><%= @charity.short_name %>: <span><%= wishlist_item.item %></span></h1></a><!--INFO HEADER-->
+	            <a href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>"><h1><%= @charity.short_name %>: <span><%= wishlist_item.item %></span></h1></a><!--INFO HEADER-->
 	            <p><%= wishlist_item.description %></p><!--MAIN INFO-->
 
 	        	<!--TERMOMETER WRAP-->
