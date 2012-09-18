@@ -122,8 +122,8 @@
 		        <!--DONATION FORM-->
 		        <div class="donationform ppBoxWrap">
 		        	<h1>Donate</h1>
-		        	<form>
-		            	<input name="donationamount" type="text" value="">
+		        	<form action="/list/<%= @charity.short_name %>/<%= @wishlist_item.id %>/donate">
+		            	<input name="amount" type="text" value="">
 						<a href="/list/<%= @charity.short_name %>/<%= @wishlist_item.id %>/donate?amount=<%= number_with_precision(@wishlist_item.remainingAgainstGoal, :precision => 2) %>">Donate remaining $<%= number_with_precision(@wishlist_item.remainingAgainstGoal, :precision => 2) %></a>
 		            	<input name="submitQuery" type="submit" value="">
 		            </form>            
