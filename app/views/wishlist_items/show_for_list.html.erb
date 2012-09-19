@@ -1,3 +1,9 @@
+<script>
+function changeImage(img) {
+    document.getElementById("main_img").src = img.src.replace("/upload/", "/upload/w_280,h_180/");
+}
+</script>
+
 <!--TOPBAR WRAP-->
 <header>
 	<div class="container">
@@ -54,14 +60,14 @@
 							<a href="/list/<%= @charity.short_name %>/<%= @wishlist_item.id %>"><%= image_tag("NoImageAvailable.png") %></a>
 						<% else %>
 							<% main_image = @before_images[0] %>
-		            		<a href="/list/<%= @charity.short_name %>/<%= @wishlist_item.id %>"><%= cl_image_tag(main_image.image, :alt => main_image.image) %></a>
+		            		<a href="/list/<%= @charity.short_name %>/<%= @wishlist_item.id %>"><%= cl_image_tag(main_image.image, :alt => main_image.image, :id => "main_img") %></a>
 						<% end %>
 		            </div>
 		            <div class="ppThumbWrap">
 						<% if !@before_images.empty? %>
 							<% if @before_images.size > 1 %>
 								<% @before_images.each do |before_image| %>
-									<a href="/list/<%= @charity.short_name %>/<%= @wishlist_item.id %>"><%= cl_image_tag(before_image.image, :alt => before_image.image) %></a>
+									<a href="#"><%= cl_image_tag(before_image.image, :alt => before_image.image, :onclick => "changeImage(this);") %></a>
 								<% end %>
 							<% end %>
 						<% end %>
