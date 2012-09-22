@@ -93,6 +93,7 @@
 						    <%= f.text_field :email, :size=>"50" %>&nbsp;&nbsp;<%= f.submit text="Donate !" %>
 
 							<%= f.hidden_field :charity_id, :value => @charity.id%>
+							<%= f.hidden_field :wishlist_item_id, :value => @wishlist_item.id%>
 						  </div>
 						<% end %>
 

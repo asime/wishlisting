@@ -13,11 +13,11 @@ Wishlisting::Application.routes.draw do
   
   match 'image_upload/test' => 'image_upload#test'
   match 'list/:short_name/' => 'charities#list'
+  match 'list/:short_name/return' => 'charities#return'
+  match 'list/:short_name/thanks' => 'charities#thanks'
   match 'list/:short_name/:wishlist_item_id' => 'wishlist_items#show_for_list'
   match 'list/:short_name/:wishlist_item_id/donate' => 'wishlist_items#donate'
   match 'not_found/:short_name/' => 'charities#not_found'
-  match 'list/:short_name/return' => 'charities#return'
-  match 'list/:short_name/thanks' => 'charities#thanks'
   match 'wishlist_items/:id/upload_before_image' => 'wishlist_items#upload_before_image'
 
   #map.connect "home/:action", :controller => 'home', :action => /[a-z]+/i
