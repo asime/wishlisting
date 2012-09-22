@@ -65,6 +65,34 @@ class WishlistItemsController < ApplicationController
       end
     end
   end
+  
+  # GET /list/:short_name/:wishlist_item_id/donate
+  def thanks
+    @charity = Charity.find(:first, :conditions => [ "lower(short_name) = ?", params[:short_name].downcase ])
+    
+    if @charity.nil?
+      redirect_to '/not_found/' + params[:short_name]
+    else
+      @wishlist_item = WishlistItem.find(params[:wishlist_item_id])
+      @other_items = WishlistItem.find(:all, :conditions => ["charity_id = ?", @charity.id])
+      if @wishlist_item.nil?
+        #Do something intelligent
+      else
+        @donation = Donation.find(params[:donation])
+        @thanks_message = ""
+        if @wishlist_item.remainingAgainstGoal > 0
+          @thanks_message = "Your generous donation of #{@donation.amount} puts us that much closer to our goal of $#{@wishlist_item.goal}!  We are now #{@wishlist_item.percentAgainstGoal}% of the way there."
+        else
+          @thanks_message = "<b>You did it! We've reached our goal of $#{@wishlist_item.goal}!"
+        end
+        @before_images = Image.find(:all, :conditions => { :wishlist_item_id => @wishlist_item.id, :image_type => false })
+        respond_to do |format|
+          format.html # list.html.erb
+          format.json { render json: @wishlist_item }
+        end
+      end
+    end
+  end
 
   # GET /wishlist_items/new
   # GET /wishlist_items/new.json
