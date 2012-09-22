@@ -83,7 +83,7 @@ class WishlistItemsController < ApplicationController
         if @wishlist_item.remainingAgainstGoal > 0
           @thanks_message = "Your generous donation of #{@donation.amount} puts us that much closer to our goal of $#{@wishlist_item.goal}!  We are now #{@wishlist_item.percentAgainstGoal}% of the way there."
         else
-          @thanks_message = "<b>You did it! We've reached our goal of $#{@wishlist_item.goal}!"
+          @thanks_message = "You did it! We've reached our goal of $#{@wishlist_item.goal}!"
         end
         @before_images = Image.find(:all, :conditions => { :wishlist_item_id => @wishlist_item.id, :image_type => false })
         respond_to do |format|

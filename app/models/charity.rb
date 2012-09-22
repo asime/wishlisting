@@ -1,5 +1,5 @@
 class Charity < ActiveRecord::Base
-  attr_accessible :about, :charity_name, :contact_name, :email, :login, :password, :dts_url, :short_name, :total_goal
+  attr_accessible :about, :charity_name, :contact_name, :email, :login, :password, :dts_url, :short_name, :total_goal, :tweet_text, :twitter_username, :facebook_url
 
   validates_uniqueness_of :short_name, :case_sensitive => false
   

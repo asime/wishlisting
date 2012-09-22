@@ -87,14 +87,14 @@ function changeImage(img) {
 						<div class="floatClear"></div>
 		        		<hr>
 						<h1>Tell your friends!</h1>
-						<p><%= text_area_tag 'tweet_text', 'I just donated to @AHIPVA to help repair a distressed home. wishlisting.org/list/AHIP', cols: 30, rows: 3 %></p>
+						<p><%= text_area_tag 'tweet_text', @charity.tweet_text, cols: 30, rows: 3 %></p>
 						<p><a href="#" onclick="TweetWindow();"><%= image_tag "twitter_share.png"%></a></p>
 
 						<hr>
 
-						<h1>Follow AHIP</h1>
+						<h1>Follow <%= @charity.short_name %></h1>
 
-						<p><a href="https://twitter.com/ahipva"><%= image_tag "twitter.png"%></a>&nbsp;&nbsp;<a href="http://www.facebook.com/ahipvahome?v=wall"><%= image_tag "facebook.png"%></a></p>
+						<p><a href="https://twitter.com/<%= @charity.twitter_username.sub("@","") %>"><%= image_tag "twitter.png"%></a>&nbsp;&nbsp;<a href="<%= @charity.facebook_url %>"><%= image_tag "facebook.png"%></a></p>
 		        	</div>
 		        </div>
 		        <!--/INFO-->
