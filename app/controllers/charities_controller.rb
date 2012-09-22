@@ -50,7 +50,11 @@ class CharitiesController < ApplicationController
       @donation = Donation.find(params[:donation])
       @donation.processed = true
       @donation.save
-      redirect_to '/list/' + @charity.short_name + '/thanks?donation=' + @donation.id.to_s
+      if !@donation.wishlist_item_id.nil? && @donation.wishlist_item_id > 0
+        redirect_to "/list/#{@charity.short_name}/#{@donation.wishlist_item_id}/thanks?donation=#{@donation.id.to_s}"
+      else
+        redirect_to "/list/#{@charity.short_name}/thanks?donation=#{@donation.id.to_s}"
+      end
     end
   end
   
