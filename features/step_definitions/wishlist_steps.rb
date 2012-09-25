@@ -1,5 +1,5 @@
-Then /^the about text should be displayed$/ do
-  page.should have_content($this_charity.about)
+Then /^the charity name should be displayed$/ do
+  page.should have_content($this_charity.charity_name)
 end
 
 Given /^Amanda visits an invalid wishlist$/ do

@@ -5,7 +5,7 @@ Background:
 
 Scenario: Display the wishlist for a charity
 	Given Amanda visits the wishlist for "AHIP"
-	Then the about text should be displayed
+	Then the charity name should be displayed
 	
 Scenario: Go to a wishlist that does not exist
 	Given Amanda visits an invalid wishlist

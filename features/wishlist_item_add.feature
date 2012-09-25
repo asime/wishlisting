@@ -13,7 +13,7 @@ Scenario: Add a wishlist item to a specific charity
  Then Amanda sees Wishlist item was successfully created on the page
  And the Charity ID, Wishlist Item and Description she entered are shown on the page
 
-@imageupload
+@imageupload @external_url
 Scenario: Add an image to a wishlist item with no images yet
  Given Amanda clicks on Add Wishlist Item
  When Amanda enters the Wishlist Item and Description
@@ -26,14 +26,14 @@ Scenario: Add an image to a wishlist item with no images yet
  And page displays the new image
  And page shows message "Image uploaded successfully"
 
-@imageupload
+@imageupload @external_url
 Scenario: Add an image to a wishlist item with an existing image already
  Given Amanda is on show wishlist item and wishlist item has one existing image
  And Amanda has chosen a new image to add
  When Amanda clicks upload image
  Then show wishlist item displays the new and existing images
 
-@imageupload
+@imageupload @external_url
 Scenario: Not an image file
  Given Amanda is on show wishlist item and wishlist item has one existing image
  And Amanda has chosen a non image to add
