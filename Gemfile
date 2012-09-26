@@ -11,7 +11,7 @@ end
 
 #gem 'sqlite3'
 group :development, :test do
- gem 'sqlite3'
+ #gem 'sqlite3'
  gem 'heroku_san'
 end
 

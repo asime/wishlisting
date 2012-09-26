@@ -4,6 +4,15 @@ function changeImage(img) {
 }
 </script>
 
+<!--Twitter share-->
+<script type="text/javascript">
+    function TweetWindow() {
+        var tweetText = document.getElementById('tweet_text');
+        window.open("http://twitter.com/intent/tweet?text=" + encodeURI(tweetText.value).replace(/#/g,"%23"), "", "");
+    }
+</script>
+<!--//Twitter share-->
+
 <!--TOPBAR WRAP-->
 <header>
 	<div class="container">
