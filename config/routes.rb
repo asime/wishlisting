@@ -4,9 +4,6 @@ Wishlisting::Application.routes.draw do
 
   get "cloudinary/index"
 
-  get "we_pay/test"
-  post "we_pay/checkout"
-
   resources :images
   resources :wishlist_items
   resources :charities

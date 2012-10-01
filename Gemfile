@@ -9,13 +9,14 @@ group :production do
   gem 'pg'
 end
 
-gem 'sqlite3'
+#gem 'sqlite3'
 group :development, :test do
  gem 'sqlite3'
  gem 'heroku_san'
 end
 
-gem 'wepay-rails'
+#gem 'wepay-rails'
+gem 'wepay'
 gem 'carrierwave'
 gem 'cloudinary'
 
