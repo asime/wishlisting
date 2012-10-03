@@ -45,14 +45,14 @@
 						<a href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>"><%= image_tag("NoImageAvailable.png") %></a>
 					<% else %>
 						<% before_image = before_images[0] %>
-	            		<a href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>"><%= cl_image_tag(before_image.image, :alt => before_image.image) %></a>
+	            		<a id="<%= @charity.short_name %><%= wishlist_item.id %>" href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>"><%= cl_image_tag(before_image.image, :alt => before_image.image) %></a>
 					<% end %>
 	            </div>
 	            <!--//THUMB WRAP-->
 
 	            <div class="imgFooter"></div><!--THUMB SHADOW-->
 
-	            <a href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>"><h1><%= @charity.short_name %>: <span><%= wishlist_item.item %></span></h1></a><!--INFO HEADER-->
+	            <a id="<%= @charity.short_name %><%= wishlist_item.id %>" href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>"><h1><%= @charity.short_name %>: <span><%= wishlist_item.item %></span></h1></a><!--INFO HEADER-->
 	            <p><%= wishlist_item.description %></p><!--MAIN INFO-->
 
 	        	<!--TERMOMETER WRAP-->

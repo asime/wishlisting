@@ -7,6 +7,7 @@ Given /^Amanda creates a charity "(.*?)"$/ do |charity_name|
   step "that Amanda has filled in all the fields"
   step "Amanda sets the charity name to \"" + charity_name + "\""
   step "she clicks on Add button"
+  @@charity_id = Charity.find_by_charity_name(charity_name).id
 end
 
 Given /^Amanda sets the charity name to "(.*?)"$/ do |charity_name|
@@ -71,5 +72,24 @@ Then /^Amanda should be sent to the wishlist thanks page$/ do
   page.should have_content $last_donation.fname
   page.should have_content $last_donation.amount
   page.should have_content $this_charity.charity_name
+end
+
+Given /^Amanda selects a wishlist item$/ do
+  charity = Charity.find(@@charity_id)
+  click_link "#{charity.short_name}1"
+end
+
+Given /^Amanda enters a donation amount$/ do
+  fill_in "amount", :with => '19.99'
+  page.should have_content "Still needs"
+  click_button "submitQuery"
+end
+
+When /^Amanda returns to the thank you page$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^she should see the dollar amount of her donation$/ do
+  pending # express the regexp above with the code you wish you had
 end
 
