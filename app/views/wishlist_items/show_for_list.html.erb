@@ -60,7 +60,7 @@ function changeImage(img) {
 							<a href="/list/<%= @charity.short_name %>/<%= @wishlist_item.id %>"><%= image_tag("NoImageAvailable.png") %></a>
 						<% else %>
 							<% main_image = @before_images[0] %>
-		            		<a href="/list/<%= @charity.short_name %>/<%= @wishlist_item.id %>"><%= cl_image_tag(main_image.image, :alt => main_image.image, :id => "main_img") %></a>
+		            		<a href="/list/<%= @charity.short_name %>/<%= @wishlist_item.id %>"><%= cl_image_tag(main_image.image, :alt => main_image.image, :id => "main_img", :width => 250, :height => 250) %></a>
 						<% end %>
 		            </div>
 		            <div class="ppThumbWrap">

@@ -81,7 +81,7 @@ class WishlistItemsController < ApplicationController
         @donation = Donation.find(params[:donation])
         @thanks_message = ""
         if @wishlist_item.remainingAgainstGoal > 0
-          @thanks_message = "Your generous donation of #{@donation.amount} puts us that much closer to our goal of $#{@wishlist_item.goal}!  We are now #{@wishlist_item.percentAgainstGoal}% of the way there."
+          @thanks_message = "Your generous donation of $#{'%.2f' % @donation.amount} puts us that much closer to our goal of $#{'%.2f' % @wishlist_item.goal}!  We are now #{'%.1f' % @wishlist_item.percentAgainstGoal}% of the way there."
         else
           @thanks_message = "You did it! We've reached our goal of $#{@wishlist_item.goal}!"
         end
