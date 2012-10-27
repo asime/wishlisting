@@ -1,5 +1,7 @@
 Wishlisting::Application.routes.draw do
   
+  devise_for :users
+
   resources :donations
 
   get "cloudinary/index"

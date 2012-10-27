@@ -1,4 +1,7 @@
 class CharitiesController < ApplicationController
+  
+  before_filter :authenticate_user!
+  
   # GET /charities
   # GET /charities.json
   def index
