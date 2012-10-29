@@ -19,6 +19,8 @@ Wishlisting::Application.routes.draw do
   match 'list/:short_name/:wishlist_item_id' => 'wishlist_items#show_for_list'
   match 'list/:short_name/:wishlist_item_id/donate' => 'wishlist_items#donate'
   match 'list/:short_name/:wishlist_item_id/thanks' => 'wishlist_items#thanks'
+  match 'list/:short_name/:wishlist_item_id/volunteer' => 'wishlist_items#volunteer'
+  match 'list/:short_name/:wishlist_item_id/thanksv' => 'wishlist_items#thanksv'
   match 'not_found/:short_name/' => 'charities#not_found'
   match 'wishlist_items/:id/upload_before_image' => 'wishlist_items#upload_before_image'
 

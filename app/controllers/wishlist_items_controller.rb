@@ -1,6 +1,6 @@
 class WishlistItemsController < ApplicationController
   
-  before_filter :authenticate_user!, :except => [:show, :show_for_list, :donate, :thanks]
+  before_filter :authenticate_user!, :except => [:show, :show_for_list, :donate, :thanks, :volunteer, :thanksv]
   
   # GET /wishlist_items
   # GET /wishlist_items.json
@@ -88,6 +88,50 @@ class WishlistItemsController < ApplicationController
         else
           @thanks_message = "You did it! We've reached our goal of $#{@wishlist_item.goal}!"
         end
+        @before_images = Image.find(:all, :conditions => { :wishlist_item_id => @wishlist_item.id, :image_type => false })
+        respond_to do |format|
+          format.html # list.html.erb
+          format.json { render json: @wishlist_item }
+        end
+      end
+    end
+  end
+  
+  # GET /list/:short_name/:wishlist_item_id/donate
+  def thanksv
+    @charity = Charity.find(:first, :conditions => [ "lower(short_name) = ?", params[:short_name].downcase ])
+    
+    if @charity.nil?
+      redirect_to '/not_found/' + params[:short_name]
+    else
+      @wishlist_item = WishlistItem.find(params[:wishlist_item_id])
+      @other_items = WishlistItem.find(:all, :conditions => ["charity_id = ?", @charity.id])
+      if @wishlist_item.nil?
+        #Do something intelligent
+      else
+        @volunteer = Volunteer.find(params[:volunteer])
+        @before_images = Image.find(:all, :conditions => { :wishlist_item_id => @wishlist_item.id, :image_type => false })
+        respond_to do |format|
+          format.html # list.html.erb
+          format.json { render json: @wishlist_item }
+        end
+      end
+    end
+  end
+  
+  # GET /list/:short_name/:wishlist_item_id/volunteer
+  def volunteer
+    @charity = Charity.find(:first, :conditions => [ "lower(short_name) = ?", params[:short_name].downcase ])
+    
+    if @charity.nil?
+      redirect_to '/not_found/' + params[:short_name]
+    else
+      @wishlist_item = WishlistItem.find(params[:wishlist_item_id])
+      @other_items = WishlistItem.find(:all, :conditions => ["charity_id = ?", @charity.id])
+      if @wishlist_item.nil?
+        #Do something intelligent
+      else
+        @volunteer = Volunteer.new
         @before_images = Image.find(:all, :conditions => { :wishlist_item_id => @wishlist_item.id, :image_type => false })
         respond_to do |format|
           format.html # list.html.erb

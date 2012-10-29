@@ -1,0 +1,208 @@
+<!--TOPBAR WRAP-->
+<header>
+	<div class="container">
+        <!--LOGO HOLDER-->
+        <a href="http://wishlisting.org"><div class="logo">
+        </div></a>
+        <!--//LOGO HOLDER-->
+        
+        <!--MAIN NAV WRAP-->
+        <nav class="main" role="menu">
+            
+        </nav>
+        <!--//MAIN NAV WRAP-->
+        
+        <div class="floatClear"></div><!--FLOAT FIX-->
+
+		<!--MAIN SEARCH-->
+        <form class="charityTitle" role="search">
+            <h2><%= @charity.charity_name %></h2>
+        </form>
+        <!--//MAIN SEARCH-->
+        
+	</div>
+</header>
+<!--//TOPBAR HOLDER-->
+
+<!--MAIN BODY-->
+<div class="bodyWrap" role="main">
+	
+    <!--GRID 4 THUMB CONTAINER-->
+    <div class="container_4">
+    	
+        <div class="floatClear"></div><!--FLOAT FIX-->
+    	
+		
+		<!--PRODUCT PAGE WRAP-->
+		<div class="ppWrap">
+
+		    <!--PP TOP BAR-->
+		    <div class="ppTopBar ppBoxWrap">
+		    	<a href="/" class="breadcrumb">Wishlisting.org</a>
+				<a href="/list/<%= @charity.short_name %>" class="breadcrumb"><%= @charity.charity_name %></a>
+		        <a href="/list/<%= @charity.short_name %>/<%= @wishlist_item.id %>" class="breadcrumb"><span class="breadcrumb"><%= @wishlist_item.item %></span></a>
+		    </div>
+		    <!--//PP TOP BAR-->
+
+			<!--PP INFO WRAP-->
+		    <div class="ppInfo ppBoxWrap">
+
+		        <div class="ppMain" style="margin:15px;">
+	        		<h1><%= @charity.short_name %>: <span><%= @wishlist_item.item %></span></h1>
+	        	</div>
+	        	<div class="ppAbout" style="margin:15px;">
+
+					<p id="notice"><%= notice %></p>
+
+					<input id="charity_id" type="hidden" value="<%= @charity.id %>" /> 
+
+					<p>
+
+						<%= form_for(@volunteer) do |f| %>
+						  <% if @volunteer.errors.any? %>
+						    <div id="error_explanation">
+						      <h2><%= pluralize(@volunteer.errors.count, "error") %> prohibited this volunteer from being saved:</h2>
+
+						      <ul>
+						      <% @volunteer.errors.full_messages.each do |msg| %>
+						        <li><%= msg %></li>
+						      <% end %>
+						      </ul>
+						    </div>
+						  <% end %>
+
+						  <div class="field">
+							<%= f.label :name, "volunteer name" %><br />
+						    <%= f.text_field :name, :size=>"35" %>
+						  </div>
+						
+						  <div class="field">
+						    <%= f.label :email, "email address" %><br />
+						    <%= f.text_field :email, :size=>"35" %>
+						  </div>
+						
+						  <div class="field">
+						    <%= f.label :phone, "phone" %><br />
+						    <%= f.text_field :phone, :size=>"35" %>
+						  </div>
+						
+						  <div class="field">
+						    <%= f.label :commnet, "Comments" %><br />
+						    <%= f.text_area :comment, :cols=>"35", :rows=>"10" %>
+						  </div>
+						
+						  <div>
+							<%= f.submit text="Volunteer Now!" %>
+
+							<%= f.hidden_field :wishlist_item_id, :value => @wishlist_item.id%>
+						  </div>
+						<% end %>
+
+					</p>
+
+
+	        	</div>
+		    </div>
+		    <!--//PP INFO WRAP-->
+
+		    <!--PP DONATION BOARD-->
+		    <div class="donationBoard">
+
+		        <div class="trackList ppBoxWrap">
+		            <!--PIECHART-->
+		            <div class="piechart">
+		                <div class="pieHolder">
+		                	<span><%= number_with_precision(@wishlist_item.percentAgainstGoal, :precision => 1) %>%</span>
+		                    <canvas id="piechart" width="60" height="60"></canvas>
+		                </div>
+		            </div>
+		            <!--//PIECHART-->
+
+		            <div class="chartDiv"></div><!--CHART DIVIER-->
+
+		            <!--THERMOMETER CHART-->
+		        	<div class="thermometerChart">
+		            	<span>of $<%= number_with_precision(@wishlist_item.goal, :precision => 2) %></span><br/><br/>
+		                <!--THERMOMETER WRAP-->
+		                <div class="thermometerWrap">
+
+		                    <!--TERMOMETER BG-->
+		                    <div class="thermometerBg">
+		                        <div class="progress"  style="width:<%= @wishlist_item.percentAgainstGoal %>%"></div><!--USE STYLE TO CONTRO PROGRESS-->
+		                    </div>
+		                    <!--//TERMOMETER BG-->
+							<span class="right"><strong>Still needs $<%= number_with_precision(@wishlist_item.remainingAgainstGoal, :precision => 2) %></strong></span><!--NEEDS INFO-->
+		                </div>
+		                <!--//TERMOMETER WRAP-->
+		            </div> 
+					<!--//TERMOMETER CHART-->
+		        </div>
+		        <!--//PIECHART-->
+
+		    </div>
+		    <!--//PP DONATION BOARD-->
+
+		    <div class="floatClear"></div>
+
+		</div>
+		<!--//PRODUCT PAGE WRAP-->
+		
+    
+    </div>
+    <!--//GRID 4 THUMB CONTAINER-->
+    
+    <div class="container">
+        <div class="bodyDivider"></div><!--SECTIION DIVEDER-->
+    </div>
+
+	<div class="floatClear"></div><!--FLOAT FIX-->        
+</div>
+<!--//MAIN BODY-->
+
+<!--PIECHART PLUGIN-->
+<script src="assets/js/pieChart.js"></script>
+<!--//PIECHART PLUGIN-->
+
+<!--ANALYTICS-->
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', '######']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+<!--FOOTER TOOL TIP-->
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".thumbWrap a").hover(function() {
+			$(this).next(".tooltipThumbs").animate({opacity: "show", top: "-175"}, "normal");
+			}, function() {
+				$(this).next(".tooltipThumbs").animate({opacity: "hide", top: "-200"}, "fast");
+			
+		});
+	});
+</script>
+<!--FOOTER TOOL TIP-->
+<!--PIE CHART-->
+<script type="text/javascript">
+	window.onload = createPieChart;
+	function createPieChart() {
+	var pieChart = new PieChart( "piechart",
+	{
+	includeLabels: true,
+	data: [<%= @wishlist_item.degreesRemaining %>, <%= @wishlist_item.degreesProgress %>],
+	labels: [],
+	colors: [
+				 ["#c47c79", "#c47c79"],
+				 ["#a63936", "#a63936"]
+	]
+	}
+	);
+	pieChart.draw();
+	}
+</script>
+<!--PIE CHART-->

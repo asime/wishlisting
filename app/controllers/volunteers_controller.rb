@@ -1,6 +1,6 @@
 class VolunteersController < ApplicationController
   
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!, :except => [:show, :create]
   
   # GET /volunteers
   # GET /volunteers.json
@@ -44,15 +44,11 @@ class VolunteersController < ApplicationController
   # POST /volunteers.json
   def create
     @volunteer = Volunteer.new(params[:volunteer])
+    @wishlist_item = WishlistItem.find(@volunteer.wishlist_item_id)
+    @charity = Charity.find(@wishlist_item.charity_id)
 
-    respond_to do |format|
-      if @volunteer.save
-        format.html { redirect_to @volunteer, notice: 'Volunteer was successfully created.' }
-        format.json { render json: @volunteer, status: :created, location: @volunteer }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @volunteer.errors, status: :unprocessable_entity }
-      end
+    if @volunteer.save
+      redirect_to "/list/#{@charity.short_name}/#{@wishlist_item.id}/thanksv?volunteer=#{@volunteer.id.to_s}"
     end
   end
 
