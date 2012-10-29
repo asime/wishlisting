@@ -1,0 +1,29 @@
+<h1>Listing volunteers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Comment</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @volunteers.each do |volunteer| %>
+  <tr>
+    <td><%= volunteer.name %></td>
+    <td><%= volunteer.email %></td>
+    <td><%= volunteer.phone %></td>
+    <td><%= volunteer.comment %></td>
+    <td><%= link_to 'Show', volunteer %></td>
+    <td><%= link_to 'Edit', edit_volunteer_path(volunteer) %></td>
+    <td><%= link_to 'Destroy', volunteer, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Volunteer', new_volunteer_path %>

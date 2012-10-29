@@ -1,5 +1,7 @@
 Wishlisting::Application.routes.draw do
   
+  resources :volunteers
+
   devise_for :users
 
   resources :donations

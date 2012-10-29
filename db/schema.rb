@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029104206) do
+ActiveRecord::Schema.define(:version => 20121029115706) do
 
   create_table "charities", :force => true do |t|
     t.string   "charity_name"
@@ -74,6 +74,15 @@ ActiveRecord::Schema.define(:version => 20121029104206) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "volunteers", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.text     "comment"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "wepay_checkout_records", :force => true do |t|
     t.integer  "checkout_id"
