@@ -51,7 +51,7 @@ function changeImage(img) {
 		    <!--//PP TOP BAR-->
 
 			<!--PP INFO WRAP-->
-		    <div class="ppInfo ppBoxWrap">
+		    <div class="ppInfo ppBoxWrap <% if !@wishlist_item.volunteer_goal.nil? && @wishlist_item.volunteer_goal > 0 %>ppInfoVolunteer<% end %>">
 
 		        <!--IMAGES-->
 		        <div class="ppSlide">
@@ -135,6 +135,28 @@ function changeImage(img) {
 		            </form>            
 		        </div>
 		        <!--DONATION FORM-->
+		
+				<% if !@wishlist_item.volunteer_goal.nil? && @wishlist_item.volunteer_goal > 0 %>
+				<!--VOLUNTEER FORM-->
+		        <div class="donationform ppBoxWrap">
+		        	<h1>Volunteer!</h1>
+					</br>
+		        	<p>We need <%= @wishlist_item.volunteer_goal %> volunteers for this project - can you help?</p>
+					<p><a href="/list/<%= @charity.short_name %>/<%= @wishlist_item.id %>/volunteer">Sign up to Volunteer!</a></p>
+		            <!--THERMOMETER WRAP-->
+	                <div class="thermometerWrap">
+
+	                    <!--TERMOMETER BG-->
+	                    <div class="thermometerBg">
+	                        <div class="progress"  style="width:<%= @wishlist_item.volunteer_goal %>%"></div><!--USE STYLE TO CONTROL PROGRESS-->
+	                    </div>
+	                    <!--//TERMOMETER BG-->
+						<span class="right"><strong>We need <%= @wishlist_item.volunteer_goal %> more volunteers</strong></span><!--NEEDS INFO-->
+	                </div>
+	                <!--//TERMOMETER WRAP-->
+		        </div>
+		        <!--VOLUNTEER FORM-->
+				<% end %>
 
 		    </div>
 		    <!--//PP DONATION BOARD-->

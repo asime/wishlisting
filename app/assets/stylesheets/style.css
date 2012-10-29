@@ -878,6 +878,9 @@ PROJECT PAGE
 	width:625px;
 	float:left;
 }
+.ppInfoVolunteer{
+	min-height:603px;
+}
 /*PP Image Slide*/
 .ppSlide{
 	width:300px;
