@@ -1,7 +1,7 @@
 class WishlistItem < ActiveRecord::Base
   belongs_to :charities
   has_many :images
-  attr_accessible :description, :item, :charity_id, :goal
+  attr_accessible :description, :item, :charity_id, :goal, :volunteer_goal
   
   def progressAgainstGoal
 	  @donations = Donation.find_all_by_wishlist_item_id(id)
