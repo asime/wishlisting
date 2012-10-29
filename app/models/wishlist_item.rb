@@ -67,4 +67,39 @@ class WishlistItem < ActiveRecord::Base
   def degreesRemaining
     360-degreesProgress
   end
+  
+  def volunteerCount
+	  @volunteers = Volunteer.find_all_by_wishlist_item_id(id)
+	  if @volunteers.nil?
+	    return 0
+	  else
+	    return @volunteers.size
+	  end
+  end
+  
+  def volunteersNeeded
+    if !volunteer_goal.nil?
+      needed = volunteer_goal - volunteerCount
+      if needed > 0 
+        return needed
+      else
+        return 0
+      end
+    else
+      return 0
+    end
+  end
+  
+  def volunteerPercent
+    if !volunteer_goal.nil?
+      needed = volunteer_goal - volunteerCount
+      if needed > 0 
+        return ((volunteer_goal.to_f - needed.to_f)/volunteer_goal.to_f)*100
+      else
+        return 100
+      end
+    else
+      return 0
+    end
+  end
 end

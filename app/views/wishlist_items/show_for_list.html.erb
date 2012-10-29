@@ -148,10 +148,10 @@ function changeImage(img) {
 
 	                    <!--TERMOMETER BG-->
 	                    <div class="thermometerBg">
-	                        <div class="progress"  style="width:<%= @wishlist_item.volunteer_goal %>%"></div><!--USE STYLE TO CONTROL PROGRESS-->
+	                        <div class="progress"  style="width:<%= @wishlist_item.volunteerPercent %>%"></div><!--USE STYLE TO CONTROL PROGRESS-->
 	                    </div>
 	                    <!--//TERMOMETER BG-->
-						<span class="right"><strong>We need <%= @wishlist_item.volunteer_goal %> more volunteers</strong></span><!--NEEDS INFO-->
+						<span class="right"><strong>We need <%= @wishlist_item.volunteersNeeded %> more volunteers!</strong></span><!--NEEDS INFO-->
 	                </div>
 	                <!--//TERMOMETER WRAP-->
 		        </div>

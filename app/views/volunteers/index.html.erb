@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+	<th>Wishlist Item</th>
     <th>Name</th>
     <th>Email</th>
     <th>Phone</th>
@@ -13,6 +14,7 @@
 
 <% @volunteers.each do |volunteer| %>
   <tr>
+	<td><%= volunteer.wishlist_item_id %></td>
     <td><%= volunteer.name %></td>
     <td><%= volunteer.email %></td>
     <td><%= volunteer.phone %></td>

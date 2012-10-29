@@ -68,6 +68,21 @@
 	                <span class="right">Goal $<%= number_with_precision(wishlist_item.goal, :precision => 2) %></span><!--NEEDS INFO-->
 	            </div>
 	            <!--//TERMOMETER WRAP-->
+	
+				<% if !wishlist_item.volunteer_goal.nil? && wishlist_item.volunteer_goal > 0 %>
+				<!--VOLUNTEER WRAP-->
+	            <div class="thermometerWrap">
+
+	                <!--TERMOMETER BG-->
+                    <div class="thermometerBg">
+                        <div class="progress"  style="width:<%= wishlist_item.volunteerPercent %>%"></div><!--USE STYLE TO CONTROL PROGRESS-->
+                    </div>
+                    <!--//TERMOMETER BG-->
+					<span class="right"><strong>We need <%= wishlist_item.volunteersNeeded %> more volunteers!</strong></span><!--NEEDS INFO-->
+					
+	            </div>
+	            <!--//VOLUNTEER WRAP-->
+				<% end %>
 
 	        </div>
 	        <!--//THUMB AND INFO MAIN WRAP-->			

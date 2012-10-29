@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029115706) do
+ActiveRecord::Schema.define(:version => 20121029144525) do
 
   create_table "charities", :force => true do |t|
     t.string   "charity_name"
@@ -80,8 +80,9 @@ ActiveRecord::Schema.define(:version => 20121029115706) do
     t.string   "email"
     t.string   "phone"
     t.text     "comment"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "wishlist_item_id"
   end
 
   create_table "wepay_checkout_records", :force => true do |t|
