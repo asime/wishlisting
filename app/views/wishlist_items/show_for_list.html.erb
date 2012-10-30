@@ -79,13 +79,14 @@ function changeImage(img) {
 		        <div class="ppTextWarp">
 		        	<div class="ppMain">
 		        		<h1><%= @charity.short_name %>: <span><%= @wishlist_item.item %></span></h1>
-		            	<p><%= @wishlist_item.description %></p>
+		            	<p><%= @wishlist_item.description.html_safe %></p>
 		        	</div>
 		            <div class="floatClear"></div>
 		        	<div class="ppAbout">
 		        		<h2>About <%= @charity.short_name %></h2>
 		            	<p><%= @charity.about %></p>
 		        	</div>
+					<div class="floatClear"></div>
 		        </div>
 		        <!--/INFO-->
 		    </div>

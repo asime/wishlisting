@@ -880,6 +880,7 @@ PROJECT PAGE
 }
 .ppInfoVolunteer{
 	min-height:603px;
+	max-height:100%;
 }
 /*PP Image Slide*/
 .ppSlide{
@@ -946,7 +947,7 @@ PROJECT PAGE
 	min-height:120px;
 }
 .ppTextWarp .ppAbout{
-	height:260px;
+	min-height:260px;
 }
 
 /*DONATION BOARD*/
