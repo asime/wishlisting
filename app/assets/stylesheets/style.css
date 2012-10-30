@@ -877,9 +877,10 @@ PROJECT PAGE
 .ppInfo{
 	width:625px;
 	float:left;
+	min-height:603px;
 }
 .ppInfoVolunteer{
-	min-height:603px;
+	min-height:803px;
 	max-height:100%;
 }
 /*PP Image Slide*/
