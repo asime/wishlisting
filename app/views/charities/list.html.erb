@@ -53,9 +53,8 @@
 	            <div class="imgFooter"></div><!--THUMB SHADOW-->
 
 	            <a id="<%= @charity.short_name %><%= wishlist_item.id %>" href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>"><h1><%= @charity.short_name %>: <span><%= wishlist_item.item %></span></h1></a><!--INFO HEADER-->
-	            <p><%= wishlist_item.description %></p><!--MAIN INFO-->
-
-	        	<!--TERMOMETER WRAP-->
+	            
+				<!--TERMOMETER WRAP-->
 	            <div class="thermometerWrap">
 
 	                <!--TERMOMETER BG-->
@@ -82,6 +81,10 @@
 					
 	            </div>
 	            <!--//VOLUNTEER WRAP-->
+	
+				<p><%= wishlist_item.description %></p><!--MAIN INFO-->
+
+	        	
 				<% end %>
 
 	        </div>

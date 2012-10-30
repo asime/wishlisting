@@ -943,7 +943,7 @@ PROJECT PAGE
 	margin-bottom:10px;
 }
 .ppTextWarp .ppMain{
-	height:120px;
+	min-height:120px;
 }
 .ppTextWarp .ppAbout{
 	height:260px;
