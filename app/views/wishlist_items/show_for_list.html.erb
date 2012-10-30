@@ -189,9 +189,9 @@ function changeImage(img) {
 		                <a href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>"><h1><%= @charity.short_name %>: <span><%= wishlist_item.item %></span></h1></a><!--INFO HEADER-->
 		                <p>
 							<% if wishlist_item.description.length > 75 %>
-								<%= wishlist_item.description[0,75] %>...
+								<%= wishlist_item.description[0,75].gsub(%r{</?[^>]+?>}, '') %>...
 							<% else %>
-								<%= wishlist_item.description %>
+								<%= wishlist_item.description.gsub(%r{</?[^>]+?>}, '') %>
 							<% end %>
 						</p>
 		                <!--TERMOMETER WRAP-->
