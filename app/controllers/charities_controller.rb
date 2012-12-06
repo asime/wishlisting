@@ -1,6 +1,6 @@
 class CharitiesController < ApplicationController
   
-  before_filter :authenticate_user!, :except => [:show, :list, :return, :thanks]
+  #before_filter :authenticate_user!, :except => [:show, :list, :return, :thanks]
   
   # GET /charities
   # GET /charities.json

@@ -1,6 +1,6 @@
 class WishlistItemsController < ApplicationController
   
-  before_filter :authenticate_user!, :except => [:show, :show_for_list, :donate, :thanks, :volunteer, :thanksv]
+  #before_filter :authenticate_user!, :except => [:show, :show_for_list, :donate, :thanks, :volunteer, :thanksv]
   
   # GET /wishlist_items
   # GET /wishlist_items.json

@@ -1,6 +1,6 @@
 class DonationsController < ApplicationController
   
-  before_filter :authenticate_user!, :except => [:show, :create]
+  #before_filter :authenticate_user!, :except => [:show, :create]
   
   # GET /donations
   # GET /donations.json

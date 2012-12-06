@@ -1,6 +1,6 @@
 class VolunteersController < ApplicationController
   
-  before_filter :authenticate_user!, :except => [:show, :create]
+  #before_filter :authenticate_user!, :except => [:show, :create]
   
   # GET /volunteers
   # GET /volunteers.json
