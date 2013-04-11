@@ -1,31 +1,54 @@
 <%= render :template => 'layouts/_admin_top' %>
 
-<h1>Listing wishlist_items</h1>
+<!--Close previous -->
+		<h2>Wishlist items <%= link_to 'add new', new_wishlist_item_path %></h2>
 
-<table>
-  <tr>
-	<th>Charity</th>
-    <th>Item</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	<div class="floatClear"></div>
+
+</div>
+<!--//PP INFO WRAP-->
+
+<div class="floatClear"></div>
 
 <% @wishlist_items.each do |wishlist_item| %>
-  <tr>
-	<td><%= wishlist_item.charity_id %></td>
-    <td><%= wishlist_item.item %></td>
-    <td><%= wishlist_item.description %></td>
-    <td><%= link_to 'Show', wishlist_item %></td>
-    <td><%= link_to 'Edit', edit_wishlist_item_path(wishlist_item) %></td>
-    <td><%= link_to 'Destroy', wishlist_item, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+
+	<% @charity = Charity.find(wishlist_item.charity_id) %>
+	<% @before_images = Image.find(:all, :conditions => { :wishlist_item_id => wishlist_item.id, :image_type => false }) %>
+
+	<!--Start New Box -->
+	<!--PP INFO WRAP-->
+	<div class="ppTopBar ppBoxWrap">
+	<!-- End New Box -->
+
+		<table>
+		  <tr>
+			<td><a href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>">view</a><br/>
+		    <%= link_to 'details', wishlist_item %><br/>
+		    <%= link_to 'edit', edit_wishlist_item_path(wishlist_item) %><br/>
+		    <%= link_to 'delete', wishlist_item, confirm: 'Are you sure you want to delete this item?  There is no going back!', method: :delete %></td>
+		    <td>
+				<div class="mainImg">
+					<% if @before_images.empty? %>
+						<a href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>"><%= image_tag("NoImageAvailable.png") %></a>
+					<% else %>
+						<% main_image = @before_images[0] %>
+		        		<a href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>"><%= cl_image_tag(main_image.image, :alt => main_image.image, :id => "main_img", :width => 250, :height => 250) %></a>
+					<% end %>
+		        </div>
+			</td>
+		    <td>
+				<h1><%= wishlist_item.item %></h1>
+				<%= wishlist_item.description.html_safe %>
+			</td>
+		  </tr>
+		</table>
+		<br />
+
+	<!--Close previous box -->
+		<div class="floatClear"></div>
+	</div>
+	<!--//PP INFO WRAP-->
+
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Wishlist item', new_wishlist_item_path %>
 
 <%= render :template => 'layouts/_admin_bottom' %>
