@@ -17,7 +17,7 @@ class WishlistItemsController < ApplicationController
   # GET /wishlist_items/1.json
   def show
     @wishlist_item = WishlistItem.find(params[:id])
-    
+    @charity = Charity.find(@wishlist_item.charity_id)
     @before_images = Image.find(:all, :conditions => { :wishlist_item_id => params[:id], :image_type => false })
 
     respond_to do |format|
