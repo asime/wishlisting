@@ -1,0 +1,44 @@
+<!--TOPBAR WRAP-->
+<header>
+	<div class="container">
+        <!--LOGO HOLDER-->
+        <a href="http://wishlisting.org"><div class="logo">
+        </div></a>
+        <!--//LOGO HOLDER-->
+        
+        <!--MAIN NAV WRAP-->
+        <nav class="main" role="menu">
+            <% if user_signed_in? %>
+			  User: <%= current_user.email %> (<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>)    
+			<% else %>
+			  <!--<%= link_to('Login', new_user_session_path)  %>  -->
+			<% end %>
+        </nav>
+        <!--//MAIN NAV WRAP-->
+        
+        <div class="floatClear"></div><!--FLOAT FIX-->
+
+		<!--MAIN SEARCH-->
+        <form class="charityTitle" role="search">
+            <h2>Put Charity Name Here!</h2>
+        </form>
+        <!--//MAIN SEARCH-->
+        
+	</div>
+</header>
+<!--//TOPBAR HOLDER-->
+
+<!--MAIN BODY-->
+<div class="bodyWrap" role="main">
+	
+    <!--GRID 4 THUMB CONTAINER-->
+    <div class="container_4">
+    	
+        <div class="floatClear"></div><!--FLOAT FIX-->
+    	
+		
+		<!--PRODUCT PAGE WRAP-->
+		<div class="ppWrap">
+
+			<!--PP INFO WRAP-->
+		    <div class="ppTopBar ppBoxWrap">
