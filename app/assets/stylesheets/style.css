@@ -1064,7 +1064,7 @@ input:focus#donation_amount.amountField {
 	width:170px;
 	height:45px;
 	margin:20px auto 0;
-	background: url(/assets/addDonationSubmit.png) top center;
+	background: url(/assets/addDonationSubmit_nocart.png) top center;
 	outline:none;
 	border:none;
 }
