@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029144525) do
+ActiveRecord::Schema.define(:version => 20130411154541) do
 
   create_table "charities", :force => true do |t|
     t.string   "charity_name"
@@ -42,10 +42,14 @@ ActiveRecord::Schema.define(:version => 20121029144525) do
     t.string   "email"
     t.string   "phone"
     t.boolean  "processed"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "charity_id"
     t.integer  "wishlist_item_id"
+    t.string   "credit_card"
+    t.string   "exp_month"
+    t.string   "exp_year"
+    t.string   "processor_message"
   end
 
   create_table "images", :force => true do |t|

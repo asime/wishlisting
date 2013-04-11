@@ -77,20 +77,30 @@
 						  </div>
 						  <div class="field">
 						    <%= f.label :fname, "your name" %><br />
-						    <%= f.text_field :fname, :size=>"20" %>&nbsp;<%= f.text_field :lname, :size=>"20" %>
+						    <%= f.text_field :fname, :size=>"20", :placeholder => "first name" %>&nbsp;<%= f.text_field :lname, :size=>"20", :placeholder => "last name" %>
 						  </div>
 
 						  <div class="field">
 						    <%= f.label :street1, "street address" %><br />
-						    <%= f.text_field :street1, :size=>"50" %><br/><br/><%= f.text_field :street2, :size=>"50" %>
+						    <%= f.text_field :street1, :size=>"50", :placeholder => "street 1" %><br/><br/><%= f.text_field :street2, :size=>"50", :placeholder => "street 2" %>
 						  </div>
 						  <div class="field">
 							<%= f.label :street1, "city, state zipcode" %><br />
-						    <%= f.text_field :city, :size=>"50"%>, <%= f.text_field :state, :size=>"5" %>&nbsp;<%= f.text_field :postal, :size=>"10" %>
+						    <%= f.text_field :city, :size=>"23", :placeholder => "city"%>, <%= f.text_field :state, :size=>"5", :placeholder => "state" %>&nbsp;<%= f.text_field :postal, :size=>"10", :placeholder => "zipcode" %>
 						  </div>
 						  <div class="field">
 						    <%= f.label :email, "email address" %><br />
-						    <%= f.text_field :email, :size=>"50" %>&nbsp;&nbsp;<%= f.submit text="Donate !" %>
+						    <%= f.text_field :email, :size=>"50", :placeholder => "email address" %>
+						  </div>
+						  <div class="field">
+						    <%= f.label :credit_card, "credit card (Visa/Mastercard/Discover)" %><br />
+						    <%= f.text_field :credit_card, :size=>"16", :placeholder => "credit card number" %>
+						  </div>
+						  <div class="field">
+						    <%= f.text_field :exp_month, :size=>"2", :placeholder => "MM" %>&nbsp;/&nbsp;<%= f.text_field :exp_year, :size=>"2", :placeholder => "YY" %>&nbsp;security code&nbsp;<%= f.text_field :cvv, :size=>"4", :placeholder => "CVV" %>
+						  </div>
+						  <div class="field">
+							<%= f.submit text="Donate !" %>
 
 							<%= f.hidden_field :charity_id, :value => @charity.id%>
 							<%= f.hidden_field :wishlist_item_id, :value => @wishlist_item.id%>
