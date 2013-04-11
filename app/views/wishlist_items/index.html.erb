@@ -35,6 +35,15 @@
 		        		<a href="/list/<%= @charity.short_name %>/<%= wishlist_item.id %>"><%= cl_image_tag(main_image.image, :alt => main_image.image, :id => "main_img", :width => 250, :height => 250) %></a>
 					<% end %>
 		        </div>
+				<div class="ppThumbWrap">
+					<% if !@before_images.empty? %>
+						<% if @before_images.size > 1 %>
+							<% @before_images.each do |before_image| %>
+								<a href="#"><%= cl_image_tag(before_image.image, :alt => before_image.image, :onclick => "changeImage(this);") %></a>
+							<% end %>
+						<% end %>
+					<% end %>
+	            </div>
 			</td>
 		    <td>
 				<h1><%= wishlist_item.item %></h1>
